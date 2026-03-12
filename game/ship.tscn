@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://rq5dka4po0my"]
 
 [ext_resource type="Script" uid="uid://bxgtd1f30ho2t" path="res://game/ship.gd" id="1_v1nl0"]
+[ext_resource type="Texture2D" uid="uid://de3tm6jamsipo" path="res://icon.svg" id="2_o7edr"]
 
 [node name="Ship" type="Node2D" unique_id=79760937]
 script = ExtResource("1_v1nl0")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=109486596]
+texture = ExtResource("2_o7edr")
