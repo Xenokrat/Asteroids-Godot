@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bk0db1dpewdc8"]
+
+[ext_resource type="Script" uid="uid://bdh1irosr452j" path="res://screen_wrap_c.gd" id="1_0ufp6"]
+
+[node name="ScreenWrapC" type="Node2D" unique_id=1778707682]
+script = ExtResource("1_0ufp6")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=215627740]
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

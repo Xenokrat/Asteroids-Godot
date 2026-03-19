@@ -3,8 +3,8 @@
 - Create a player ship. The ship should be able to rotate and thrust. Thrust will accelerate the ship “forward” in the direction that it is facing.
 - Add bullets. The player ship will fire in the direction that it is facing. Bullets will disappear after a short while.
 - Create three sizes of asteroids.
-    - Asteroids will break into smaller asteroids when shot (The smallest will disappear when shot).
-    - Asteroids will drift around until they are shot or they collide with the player. If the player collides with an - asteroid, they will lose a life. Enable screen wrapping. (Objects leaving the top of the screen should enter the bottom, for example)
+	- Asteroids will break into smaller asteroids when shot (The smallest will disappear when shot).
+	- Asteroids will drift around until they are shot or they collide with the player. If the player collides with an - asteroid, they will lose a life. Enable screen wrapping. (Objects leaving the top of the screen should enter the bottom, for example)
 - Add menus and UI.
 - Add sound effects and particle effects.
 

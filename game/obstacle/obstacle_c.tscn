@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dog6u0s4dsepu"]
+
+[ext_resource type="Script" uid="uid://3e3jvyjl7tfx" path="res://game/obstacle/obstacle_c.gd" id="1_i8si4"]
+
+[node name="ObstacleC" type="Node" unique_id=1936839166]
+script = ExtResource("1_i8si4")

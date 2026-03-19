@@ -1,10 +1,60 @@
 [gd_scene format=3 uid="uid://rq5dka4po0my"]
 
 [ext_resource type="Script" uid="uid://bxgtd1f30ho2t" path="res://game/ship.gd" id="1_v1nl0"]
+[ext_resource type="PackedScene" uid="uid://dyqpwj2muabc0" path="res://game/bullet.tscn" id="2_4fy5o"]
 [ext_resource type="Texture2D" uid="uid://de3tm6jamsipo" path="res://icon.svg" id="2_o7edr"]
+[ext_resource type="Script" uid="uid://dv5316krqdhjv" path="res://game/hitbox/hitbox_component.gd" id="3_4fy5o"]
+[ext_resource type="Script" uid="uid://w5ced6gnigvs" path="res://game/health/health_component.gd" id="4_w774p"]
+[ext_resource type="PackedScene" uid="uid://bk0db1dpewdc8" path="res://game/movement/screen_wrap_c.tscn" id="6_usgp0"]
+[ext_resource type="Script" uid="uid://dgnq23jom2vyo" path="res://game/health_ui/health_ui.gd" id="6_w6vuu"]
+[ext_resource type="Theme" uid="uid://d1fnn2lg7l03w" path="res://asteroids_theme.tres" id="7_jxkod"]
 
-[node name="Ship" type="Node2D" unique_id=79760937]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4fy5o"]
+size = Vector2(64, 64)
+
+[node name="Ship" type="Node2D" unique_id=432438455]
 script = ExtResource("1_v1nl0")
+bullet_scene = ExtResource("2_4fy5o")
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=109486596]
+[node name="ShipPlayer" type="CharacterBody2D" parent="." unique_id=974843177]
+unique_name_in_owner = true
+metadata/_edit_group_ = true
+
+[node name="Icon" type="Sprite2D" parent="ShipPlayer" unique_id=109486596]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_o7edr")
+
+[node name="BulletMarker" type="Marker2D" parent="ShipPlayer" unique_id=1473804689]
+unique_name_in_owner = true
+position = Vector2(0, -72)
+
+[node name="HitboxComponent" type="Area2D" parent="ShipPlayer" unique_id=496145251 node_paths=PackedStringArray("health_component")]
+collision_mask = 4
+script = ExtResource("3_4fy5o")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://dv5316krqdhjv"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShipPlayer/HitboxComponent" unique_id=1738713845]
+shape = SubResource("RectangleShape2D_4fy5o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShipPlayer" unique_id=1280567512]
+shape = SubResource("RectangleShape2D_4fy5o")
+
+[node name="HealthComponent" type="Node" parent="ShipPlayer" unique_id=1759881949]
+script = ExtResource("4_w774p")
+metadata/_custom_type_script = "uid://w5ced6gnigvs"
+
+[node name="ScreenWrapC" parent="ShipPlayer" unique_id=1778707682 instance=ExtResource("6_usgp0")]
+
+[node name="HealthUI" type="Node2D" parent="." unique_id=1413375827 node_paths=PackedStringArray("health_c")]
+script = ExtResource("6_w6vuu")
+health_c = NodePath("../ShipPlayer/HealthComponent")
+metadata/_custom_type_script = "uid://dgnq23jom2vyo"
+
+[node name="ProgressBar" type="ProgressBar" parent="HealthUI" unique_id=286658403]
+offset_left = -32.0
+offset_top = -45.0
+offset_right = 32.0
+offset_bottom = -40.0
+theme = ExtResource("7_jxkod")
+show_percentage = false

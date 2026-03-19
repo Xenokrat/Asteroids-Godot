@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bbexy50m2ngh5"]
+
+[ext_resource type="PackedScene" uid="uid://c5221rlni4c27" path="res://game/asteroid/asteroid.tscn" id="1_p0l3m"]
+
+[node name="MidAsteroid" unique_id=1464636514 instance=ExtResource("1_p0l3m")]
+speed = 20
+asteroid_type = 1
+
+[node name="Polygon2D" type="Polygon2D" parent="." index="0" unique_id=1111535584]
+unique_name_in_owner = true
+polygon = PackedVector2Array(-30, 26, -40, 0, -38, -15, -28, -36, -17, -50, -2, -57, 19, -53, 38, -29, 54, -6, 51, 22, 36, 43, 10, 54, -13, 51)
+
+[node name="ProgressBar" parent="HealthUI" parent_id_path=PackedInt32Array(1604927) index="0" unique_id=1875006906]
+offset_left = -28.0
+offset_top = -43.0
+offset_right = 30.0
+offset_bottom = -38.0
