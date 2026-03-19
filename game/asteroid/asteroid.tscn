@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dgnq23jom2vyo" path="res://game/health_ui/health_ui.gd" id="3_nf0js"]
 [ext_resource type="Theme" uid="uid://d1fnn2lg7l03w" path="res://asteroids_theme.tres" id="4_1ni0w"]
 [ext_resource type="PackedScene" uid="uid://bk0db1dpewdc8" path="res://game/movement/screen_wrap_c.tscn" id="6_q8t3h"]
+[ext_resource type="Script" uid="uid://bmei40wsbb27n" path="res://game/asteroid/state_machine.gd" id="7_yvtuu"]
 
 [node name="Asteroid" type="RigidBody2D" unique_id=1464636514]
 gravity_scale = 0.0
@@ -40,3 +41,7 @@ metadata/_custom_type_script = "uid://w5ced6gnigvs"
 
 [node name="ScreenWrapC" parent="." unique_id=1778707682 instance=ExtResource("6_q8t3h")]
 offset = 100
+
+[node name="StateMachine" type="Node" parent="." unique_id=1433151912]
+script = ExtResource("7_yvtuu")
+metadata/_custom_type_script = "uid://bmei40wsbb27n"

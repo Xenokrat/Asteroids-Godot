@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c1jsx444eficr"]
+
+[ext_resource type="Script" uid="uid://kybsb5kl7na" path="res://game/algo/state.gd" id="1_omrlh"]
+
+[node name="State" type="Node" unique_id=2040709952]
+script = ExtResource("1_omrlh")

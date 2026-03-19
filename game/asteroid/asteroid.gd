@@ -14,6 +14,7 @@ const ANGULAR_VELOCITY_VARIATION = PI / 2
 
 @onready var hitbox_c: HitboxComponent = %HitboxComponent
 @onready var polygon: Polygon2D = %Polygon2D
+@onready var state_machine: StateMachine = %StateMachine
 
 var spawner: Spawner
 
@@ -25,6 +26,8 @@ func _ready() -> void:
 
 	var collision_polygon2 := collision_polygon.duplicate()
 	call_deferred("add_child", collision_polygon2)
+
+	state_machine.init(self)
 
 
 func set_speed() -> void:
