@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://bxgtd1f30ho2t" path="res://game/ship.gd" id="1_v1nl0"]
 [ext_resource type="PackedScene" uid="uid://dyqpwj2muabc0" path="res://game/bullet.tscn" id="2_4fy5o"]
 [ext_resource type="Texture2D" uid="uid://de3tm6jamsipo" path="res://icon.svg" id="2_o7edr"]
-[ext_resource type="Script" uid="uid://dv5316krqdhjv" path="res://game/hitbox/hitbox_component.gd" id="3_4fy5o"]
-[ext_resource type="Script" uid="uid://w5ced6gnigvs" path="res://game/health/health_component.gd" id="4_w774p"]
-[ext_resource type="PackedScene" uid="uid://bk0db1dpewdc8" path="res://game/movement/screen_wrap_c.tscn" id="6_usgp0"]
+[ext_resource type="Script" uid="uid://dv5316krqdhjv" path="res://game/component/hitbox/hitbox_c.gd" id="3_4fy5o"]
+[ext_resource type="Script" uid="uid://w5ced6gnigvs" path="res://game/component/health/health_c.gd" id="4_w774p"]
+[ext_resource type="Script" uid="uid://bdh1irosr452j" path="res://game/component/movement/screen_wrap_c.gd" id="6_usgp0"]
 [ext_resource type="Script" uid="uid://dgnq23jom2vyo" path="res://game/health_ui/health_ui.gd" id="6_w6vuu"]
 [ext_resource type="Theme" uid="uid://d1fnn2lg7l03w" path="res://asteroids_theme.tres" id="7_jxkod"]
 
@@ -44,7 +44,11 @@ shape = SubResource("RectangleShape2D_4fy5o")
 script = ExtResource("4_w774p")
 metadata/_custom_type_script = "uid://w5ced6gnigvs"
 
-[node name="ScreenWrapC" parent="ShipPlayer" unique_id=1778707682 instance=ExtResource("6_usgp0")]
+[node name="ScreenWrap_C" type="Node2D" parent="ShipPlayer" unique_id=2107187508 node_paths=PackedStringArray("parent")]
+script = ExtResource("6_usgp0")
+parent = NodePath("..")
+is_active = true
+metadata/_custom_type_script = "uid://bdh1irosr452j"
 
 [node name="HealthUI" type="Node2D" parent="." unique_id=1413375827 node_paths=PackedStringArray("health_c")]
 script = ExtResource("6_w6vuu")

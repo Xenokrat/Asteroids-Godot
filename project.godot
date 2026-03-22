@@ -13,10 +13,12 @@ config_version=5
 config/name="Asteroids"
 run/main_scene="uid://b6sgu20icdxiy"
 config/features=PackedStringArray("4.6", "Forward Plus")
+run/max_fps=240
 config/icon="res://icon.svg"
 
 [debug]
 
+settings/stdout/print_fps=true
 gdscript/warnings/untyped_declaration=2
 
 [display]

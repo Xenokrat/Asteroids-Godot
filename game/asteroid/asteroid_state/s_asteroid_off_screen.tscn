@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bjryj1o0avvrx"]
+
+[ext_resource type="Script" uid="uid://brliqo4fki81s" path="res://game/asteroid/asteroid_state/s_asteroid_off_screen.gd" id="1_s5g5w"]
+
+[node name="S_AsteroidOffScreen" type="Node" unique_id=1332761485]
+script = ExtResource("1_s5g5w")

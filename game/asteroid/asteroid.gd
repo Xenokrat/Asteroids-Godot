@@ -15,6 +15,10 @@ const ANGULAR_VELOCITY_VARIATION = PI / 2
 @onready var hitbox_c: HitboxComponent = %HitboxComponent
 @onready var polygon: Polygon2D = %Polygon2D
 @onready var state_machine: StateMachine = %StateMachine
+@onready var off_screen_c: OffScreen_C = %OffScreen_C
+@onready var screen_wrap_c: ScreenWrap_C = %ScreenWrap_C
+
+@onready var on_screen_notifier: VisibleOnScreenNotifier2D = %VisibleOnScreenNotifier2D
 
 var spawner: Spawner
 

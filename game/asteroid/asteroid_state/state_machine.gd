@@ -8,6 +8,8 @@ var current_state: State
 func init(parent: Asteroid) -> void:
 	for child in get_children():
 		child.parent = parent
+		child.connect("state_changed", change_state)
+	assert(starting_state, "Starting state of State Machine is not set!")
 	change_state(starting_state)
 
 

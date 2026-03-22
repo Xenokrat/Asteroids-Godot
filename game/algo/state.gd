@@ -2,6 +2,8 @@
 class_name State
 extends Node
 
+signal state_changed(new_state: State)
+
 var parent: Node2D
 
 

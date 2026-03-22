@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ovxjf6sxnne3"]
 
 [ext_resource type="Script" uid="uid://xax10w5naj56" path="res://game/spawner/spawner.gd" id="1_bd2ld"]
-[ext_resource type="PackedScene" uid="uid://bakgi0q2tiw81" path="res://game/asteroid/big_asteroid.tscn" id="2_5tlfd"]
-[ext_resource type="PackedScene" uid="uid://c2eihw0ian8on" path="res://game/asteroid/small_asteroid.tscn" id="3_v8cro"]
+[ext_resource type="PackedScene" uid="uid://bakgi0q2tiw81" path="res://game/asteroid/asteroid_type/big_asteroid.tscn" id="2_5tlfd"]
+[ext_resource type="PackedScene" uid="uid://c2eihw0ian8on" path="res://game/asteroid/asteroid_type/small_asteroid.tscn" id="3_v8cro"]
 
 [sub_resource type="Curve2D" id="Curve2D_rno13"]
 _data = {

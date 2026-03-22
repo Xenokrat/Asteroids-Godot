@@ -10,6 +10,9 @@ const START_ASTEROID_COUNT := 5
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var spawn_path: PathFollow2D = %PathFollow2D
 
+# DEBUG
+@export var turn_off: bool = false
+
 
 func _ready() -> void:
 	for i in range(START_ASTEROID_COUNT):
@@ -21,6 +24,8 @@ func _on_spawn_timer_timeout() -> void:
 
 
 func spawn_asteroid() -> void:
+	if turn_off:
+		return
 	var asteroid: Asteroid = asteroids_scenes.pick_random().instantiate()
 	asteroid.spawner = self
 	add_child(asteroid)

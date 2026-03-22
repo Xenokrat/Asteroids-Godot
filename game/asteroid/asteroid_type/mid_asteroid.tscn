@@ -15,3 +15,6 @@ offset_left = -28.0
 offset_top = -43.0
 offset_right = 30.0
 offset_bottom = -38.0
+
+[node name="StateMachine" parent="." index="5" unique_id=1433151912]
+unique_name_in_owner = true

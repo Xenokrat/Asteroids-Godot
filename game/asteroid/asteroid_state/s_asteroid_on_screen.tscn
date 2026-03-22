@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bxvple7bs3i4x"]
+
+[ext_resource type="Script" uid="uid://45yo1vonvmpx" path="res://game/asteroid/asteroid_state/s_asteroid_on_screen.gd" id="1_lj0il"]
+
+[node name="S_AsteroidOnScreen" type="Node" unique_id=1683599157]
+script = ExtResource("1_lj0il")

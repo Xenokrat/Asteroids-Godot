@@ -12,3 +12,6 @@ polygon = PackedVector2Array(-11, 11, -16, -3, -6, -13, 6, -22, 18, -12, 22, 9, 
 
 [node name="HealthComponent" parent="." index="3" unique_id=1043955643]
 MAX_HEALTH = 5
+
+[node name="StateMachine" parent="." index="5" unique_id=1433151912]
+unique_name_in_owner = true

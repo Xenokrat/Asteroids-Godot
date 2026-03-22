@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://c5221rlni4c27"]
 
 [ext_resource type="Script" uid="uid://m0ehe1ryy40t" path="res://game/asteroid/asteroid.gd" id="1_xqk6a"]
-[ext_resource type="PackedScene" uid="uid://b3aew2nrtdl46" path="res://game/hitbox/hitbox_component.tscn" id="1_ygxnk"]
-[ext_resource type="Script" uid="uid://w5ced6gnigvs" path="res://game/health/health_component.gd" id="2_nf0js"]
+[ext_resource type="PackedScene" uid="uid://b3aew2nrtdl46" path="res://game/component/hitbox/hitbox_c.tscn" id="1_ygxnk"]
+[ext_resource type="Script" uid="uid://w5ced6gnigvs" path="res://game/component/health/health_c.gd" id="2_nf0js"]
 [ext_resource type="Script" uid="uid://dgnq23jom2vyo" path="res://game/health_ui/health_ui.gd" id="3_nf0js"]
 [ext_resource type="Theme" uid="uid://d1fnn2lg7l03w" path="res://asteroids_theme.tres" id="4_1ni0w"]
-[ext_resource type="PackedScene" uid="uid://bk0db1dpewdc8" path="res://game/movement/screen_wrap_c.tscn" id="6_q8t3h"]
-[ext_resource type="Script" uid="uid://bmei40wsbb27n" path="res://game/asteroid/state_machine.gd" id="7_yvtuu"]
+[ext_resource type="Script" uid="uid://bmei40wsbb27n" path="res://game/asteroid/asteroid_state/state_machine.gd" id="7_yvtuu"]
+[ext_resource type="Script" uid="uid://brliqo4fki81s" path="res://game/asteroid/asteroid_state/s_asteroid_off_screen.gd" id="8_5rby4"]
+[ext_resource type="Script" uid="uid://45yo1vonvmpx" path="res://game/asteroid/asteroid_state/s_asteroid_on_screen.gd" id="8_utpev"]
+[ext_resource type="Script" uid="uid://bdh1irosr452j" path="res://game/component/movement/screen_wrap_c.gd" id="9_5rby4"]
+[ext_resource type="PackedScene" uid="uid://b0j8rbmrofe7b" path="res://game/component/off_screen_c/off_screen_c.tscn" id="9_ronxi"]
 
 [node name="Asteroid" type="RigidBody2D" unique_id=1464636514]
 gravity_scale = 0.0
@@ -37,11 +40,33 @@ metadata/_edit_use_anchors_ = true
 [node name="HealthComponent" type="Node" parent="." unique_id=1043955643]
 script = ExtResource("2_nf0js")
 MAX_HEALTH = 15
-metadata/_custom_type_script = "uid://w5ced6gnigvs"
 
-[node name="ScreenWrapC" parent="." unique_id=1778707682 instance=ExtResource("6_q8t3h")]
-offset = 100
-
-[node name="StateMachine" type="Node" parent="." unique_id=1433151912]
+[node name="StateMachine" type="Node" parent="." unique_id=1433151912 node_paths=PackedStringArray("starting_state")]
+unique_name_in_owner = true
 script = ExtResource("7_yvtuu")
+starting_state = NodePath("S_AsteroidOffScreen")
 metadata/_custom_type_script = "uid://bmei40wsbb27n"
+
+[node name="S_AsteroidOnScreen" type="Node" parent="StateMachine" unique_id=1579152739]
+script = ExtResource("8_utpev")
+metadata/_custom_type_script = "uid://45yo1vonvmpx"
+
+[node name="S_AsteroidOffScreen" type="Node" parent="StateMachine" unique_id=1577890606 node_paths=PackedStringArray("asteroid_on_screen")]
+script = ExtResource("8_5rby4")
+asteroid_on_screen = NodePath("../S_AsteroidOnScreen")
+metadata/_custom_type_script = "uid://brliqo4fki81s"
+
+[node name="OffScreen_C" parent="." unique_id=705656702 node_paths=PackedStringArray("parent") instance=ExtResource("9_ronxi")]
+unique_name_in_owner = true
+parent = NodePath("..")
+
+[node name="ScreenWrap_C" type="Node2D" parent="." unique_id=1743343877 node_paths=PackedStringArray("parent")]
+unique_name_in_owner = true
+script = ExtResource("9_5rby4")
+parent = NodePath("..")
+metadata/_custom_type_script = "uid://bdh1irosr452j"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1900545480]
+unique_name_in_owner = true
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

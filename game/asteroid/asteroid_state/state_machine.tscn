@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ddmudwu5xlbsr"]
 
-[ext_resource type="Script" uid="uid://bmei40wsbb27n" path="res://game/asteroid/state_machine.gd" id="1_jtu3w"]
+[ext_resource type="Script" uid="uid://bmei40wsbb27n" path="res://game/asteroid/asteroid_state/state_machine.gd" id="1_jtu3w"]
 
 [node name="StateMachine" type="Node" unique_id=1208908058]
 script = ExtResource("1_jtu3w")
