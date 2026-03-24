@@ -5,9 +5,9 @@ const ROTATE_UPPER_LEFT := 3. / 4. * PI
 const ROTATE_UPPER := PI
 const ROTATE_UPPER_RIGHT := 5. / 4. * PI
 const ROTATE_RIGHT := 3. / 2. * PI
-const ROTATE_BOTTOM_LEFT := 7. / 4. * PI
+const ROTATE_BOTTOM_RIGHT := 7. / 4. * PI
 const ROTATE_BOTTOM := 0
-const ROTATE_BOTTOM_RIGHT := 1. / 4. * PI
+const ROTATE_BOTTOM_LEFT := 1. / 4. * PI
 const ROTATE_LEFT := 1. / 2. * PI
 const EDGE_OFFSET := 20
 
@@ -52,7 +52,7 @@ func _process(_delta: float) -> void:
 	# 3
 	elif (parent_pos.x >= screen_size.x and
 		parent_pos.y < 0 ):
-		global_position = Vector2(screen_size.x + EDGE_OFFSET, 0 + EDGE_OFFSET)
+		global_position = Vector2(screen_size.x - EDGE_OFFSET, 0 + EDGE_OFFSET)
 		global_rotation = ROTATE_UPPER_RIGHT
 	# 4
 	elif (parent_pos.x >= screen_size.x and
@@ -66,7 +66,7 @@ func _process(_delta: float) -> void:
 		global_position = Vector2(screen_size.x - EDGE_OFFSET, screen_size.y - EDGE_OFFSET)
 		global_rotation = ROTATE_BOTTOM_RIGHT
 	# 6
-	elif (parent_pos.x >= screen_size.x and
+	elif (parent_pos.x >= 0 and
 		parent_pos.x < screen_size.x and
 		parent_pos.y >= screen_size.y ):
 		global_position = Vector2(parent_pos.x, screen_size.y - EDGE_OFFSET)

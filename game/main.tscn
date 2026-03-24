@@ -11,3 +11,6 @@ script = ExtResource("1_oa506")
 position = Vector2(509, 295)
 
 [node name="Spawner" parent="." unique_id=67136409 instance=ExtResource("3_emt18")]
+turn_off = true
+
+[editable path="Ship"]

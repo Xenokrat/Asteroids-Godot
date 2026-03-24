@@ -65,8 +65,3 @@ unique_name_in_owner = true
 script = ExtResource("9_5rby4")
 parent = NodePath("..")
 metadata/_custom_type_script = "uid://bdh1irosr452j"
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1900545480]
-unique_name_in_owner = true
-
-[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

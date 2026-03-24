@@ -31,7 +31,7 @@ position = Vector2(0, -72)
 [node name="HitboxComponent" type="Area2D" parent="ShipPlayer" unique_id=496145251 node_paths=PackedStringArray("health_component")]
 collision_mask = 4
 script = ExtResource("3_4fy5o")
-health_component = NodePath("../HealthComponent")
+health_component = NodePath("../../HealthComponent")
 metadata/_custom_type_script = "uid://dv5316krqdhjv"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShipPlayer/HitboxComponent" unique_id=1738713845]
@@ -40,25 +40,25 @@ shape = SubResource("RectangleShape2D_4fy5o")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShipPlayer" unique_id=1280567512]
 shape = SubResource("RectangleShape2D_4fy5o")
 
-[node name="HealthComponent" type="Node" parent="ShipPlayer" unique_id=1759881949]
-script = ExtResource("4_w774p")
-metadata/_custom_type_script = "uid://w5ced6gnigvs"
-
 [node name="ScreenWrap_C" type="Node2D" parent="ShipPlayer" unique_id=2107187508 node_paths=PackedStringArray("parent")]
 script = ExtResource("6_usgp0")
 parent = NodePath("..")
-is_active = true
 metadata/_custom_type_script = "uid://bdh1irosr452j"
 
-[node name="HealthUI" type="Node2D" parent="." unique_id=1413375827 node_paths=PackedStringArray("health_c")]
+[node name="HealthUI" type="Node2D" parent="ShipPlayer" unique_id=1413375827 node_paths=PackedStringArray("health_c")]
 script = ExtResource("6_w6vuu")
-health_c = NodePath("../ShipPlayer/HealthComponent")
+health_c = NodePath("../../HealthComponent")
 metadata/_custom_type_script = "uid://dgnq23jom2vyo"
 
-[node name="ProgressBar" type="ProgressBar" parent="HealthUI" unique_id=286658403]
+[node name="ProgressBar" type="ProgressBar" parent="ShipPlayer/HealthUI" unique_id=286658403]
 offset_left = -32.0
 offset_top = -45.0
 offset_right = 32.0
 offset_bottom = -40.0
 theme = ExtResource("7_jxkod")
 show_percentage = false
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1759881949]
+script = ExtResource("4_w774p")
+MAX_HEALTH = 15
+metadata/_custom_type_script = "uid://w5ced6gnigvs"

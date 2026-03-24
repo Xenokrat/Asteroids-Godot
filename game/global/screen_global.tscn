@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://crdlfbvaciido"]
+
+[ext_resource type="Script" uid="uid://b7lmol7k5cgem" path="res://game/global/screen_global.gd" id="1_18uws"]
+
+[node name="ScreenGlobal" type="Node2D" unique_id=289222429]
+script = ExtResource("1_18uws")

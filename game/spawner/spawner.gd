@@ -3,12 +3,19 @@ extends Node2D
 
 const ASTEROID_START_ANGLE_VARIATION := PI / 4
 const START_ASTEROID_COUNT := 5
+const ASTEROID_TYPE_SPAWN_PROBABILITY: PackedFloat32Array = [
+	0.5, # small
+	0.3, # mid
+	0.2, # big
+]
 
 @export var asteroids_scenes: Array[PackedScene]
 @export var small_asteroid_scene: PackedScene
 
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var spawn_path: PathFollow2D = %PathFollow2D
+
+@onready var rng := RandomNumberGenerator.new()
 
 # DEBUG
 @export var turn_off: bool = false
@@ -26,7 +33,8 @@ func _on_spawn_timer_timeout() -> void:
 func spawn_asteroid() -> void:
 	if turn_off:
 		return
-	var asteroid: Asteroid = asteroids_scenes.pick_random().instantiate()
+
+	var asteroid: Asteroid = asteroids_scenes[rng.rand_weighted(ASTEROID_TYPE_SPAWN_PROBABILITY)].instantiate()
 	asteroid.spawner = self
 	add_child(asteroid)
 

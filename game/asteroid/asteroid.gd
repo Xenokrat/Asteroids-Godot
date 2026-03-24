@@ -18,8 +18,6 @@ const ANGULAR_VELOCITY_VARIATION = PI / 2
 @onready var off_screen_c: OffScreen_C = %OffScreen_C
 @onready var screen_wrap_c: ScreenWrap_C = %ScreenWrap_C
 
-@onready var on_screen_notifier: VisibleOnScreenNotifier2D = %VisibleOnScreenNotifier2D
-
 var spawner: Spawner
 
 
@@ -32,6 +30,18 @@ func _ready() -> void:
 	call_deferred("add_child", collision_polygon2)
 
 	state_machine.init(self)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	state_machine.process_input(event)
+
+
+func _process(delta: float) -> void:
+	state_machine.process_frame(delta)
+
+
+func _physics_process(delta: float) -> void:
+	state_machine.process_physics(delta)
 
 
 func set_speed() -> void:
@@ -55,7 +65,9 @@ func destroy() -> void:
 		AsteroidType.SMALL:
 			pass
 		AsteroidType.MID:
-			spawner.spawn_small_asteroids(2, global_position)
+			if spawner:
+				spawner.spawn_small_asteroids(2, global_position)
 		AsteroidType.BIG:
-			spawner.spawn_small_asteroids(4, global_position)
+			if spawner:
+				spawner.spawn_small_asteroids(4, global_position)
 	queue_free()

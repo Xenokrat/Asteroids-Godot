@@ -2,12 +2,18 @@ class_name AsteroidOffScreenState
 extends State
 
 @export var asteroid_on_screen: AsteroidOnScreenState
+var screen_size: Vector2
+var polygon: Polygon2D
 
 
 func enter() -> void:
 	(parent as Asteroid).off_screen_c.activate()
-	(parent as Asteroid).on_screen_notifier.connect("screen_entered", _on_screen_entered)
+	polygon = parent.polygon
 
 
-func _on_screen_entered() -> void:
-	emit_signal("state_changed", asteroid_on_screen)
+func process_frame(_delta: float) -> State:
+	var asteroid_polygon: PackedVector2Array = polygon.polygon
+	if Utils.is_any_point_on_screen(parent, asteroid_polygon):
+		print("is on screen")
+		return asteroid_on_screen
+	return null

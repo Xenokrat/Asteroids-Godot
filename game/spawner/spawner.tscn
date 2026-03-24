@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://xax10w5naj56" path="res://game/spawner/spawner.gd" id="1_bd2ld"]
 [ext_resource type="PackedScene" uid="uid://bakgi0q2tiw81" path="res://game/asteroid/asteroid_type/big_asteroid.tscn" id="2_5tlfd"]
+[ext_resource type="PackedScene" uid="uid://bbexy50m2ngh5" path="res://game/asteroid/asteroid_type/mid_asteroid.tscn" id="3_2hkq5"]
 [ext_resource type="PackedScene" uid="uid://c2eihw0ian8on" path="res://game/asteroid/asteroid_type/small_asteroid.tscn" id="3_v8cro"]
 
 [sub_resource type="Curve2D" id="Curve2D_rno13"]
@@ -12,7 +13,7 @@ point_count = 5
 
 [node name="Spawner" type="Node2D" unique_id=67136409]
 script = ExtResource("1_bd2ld")
-asteroids_scenes = Array[PackedScene]([ExtResource("2_5tlfd")])
+asteroids_scenes = Array[PackedScene]([ExtResource("3_v8cro"), ExtResource("3_2hkq5"), ExtResource("2_5tlfd")])
 small_asteroid_scene = ExtResource("3_v8cro")
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1467474880]
@@ -27,6 +28,7 @@ rotation = -3.1415925
 progress = 3599.999
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=801647193]
+wait_time = 2.0
 autostart = true
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
