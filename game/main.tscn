@@ -8,7 +8,7 @@
 script = ExtResource("1_oa506")
 
 [node name="Ship" parent="." unique_id=79760937 instance=ExtResource("2_xtpaf")]
-position = Vector2(509, 295)
+position = Vector2(557, 329)
 
 [node name="Spawner" parent="." unique_id=67136409 instance=ExtResource("3_emt18")]
 turn_off = true
