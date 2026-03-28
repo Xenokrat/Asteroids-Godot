@@ -38,6 +38,13 @@ func _process(_delta: float) -> void:
 
 	var parent_pos: Vector2 = parent.global_position
 
+	#   1 |      2      | 3
+	# --- +-------------+ ---
+	#     |             |
+	#   8 |   screen    | 4
+	#     |             |
+	# --- +-------------+ ---
+	#   7 |      6      | 5
 	# 1
 	if (parent_pos.x < 0 and
 		parent_pos.y < 0 ):

@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://de3tm6jamsipo" path="res://icon.svg" id="2_o7edr"]
 [ext_resource type="Script" uid="uid://dv5316krqdhjv" path="res://game/component/hitbox/hitbox_c.gd" id="3_4fy5o"]
 [ext_resource type="Script" uid="uid://w5ced6gnigvs" path="res://game/component/health/health_c.gd" id="4_w774p"]
-[ext_resource type="Script" uid="uid://bdh1irosr452j" path="res://game/component/movement/screen_wrap_c.gd" id="6_usgp0"]
 [ext_resource type="Script" uid="uid://dgnq23jom2vyo" path="res://game/health_ui/health_ui.gd" id="6_w6vuu"]
 [ext_resource type="Theme" uid="uid://d1fnn2lg7l03w" path="res://asteroids_theme.tres" id="7_jxkod"]
+[ext_resource type="Script" uid="uid://bah88w2suaaua" path="res://game/component/screen_wrap/screen_wrap_c.gd" id="8_usgp0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4fy5o"]
 size = Vector2(64, 64)
@@ -15,6 +15,18 @@ size = Vector2(64, 64)
 [node name="Ship" type="Node2D" unique_id=432438455]
 script = ExtResource("1_v1nl0")
 bullet_scene = ExtResource("2_4fy5o")
+
+[node name="ScreenWrap_C" type="Node2D" parent="." unique_id=1615057731 node_paths=PackedStringArray("root", "object", "object_shape")]
+script = ExtResource("8_usgp0")
+root = NodePath("..")
+object = NodePath("../ShipPlayer")
+object_shape = NodePath("../ShipPlayer/HitboxComponent/CollisionShape2D")
+metadata/_custom_type_script = "uid://bah88w2suaaua"
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1759881949]
+script = ExtResource("4_w774p")
+MAX_HEALTH = 15
+metadata/_custom_type_script = "uid://w5ced6gnigvs"
 
 [node name="ShipPlayer" type="CharacterBody2D" parent="." unique_id=974843177]
 unique_name_in_owner = true
@@ -40,11 +52,6 @@ shape = SubResource("RectangleShape2D_4fy5o")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShipPlayer" unique_id=1280567512]
 shape = SubResource("RectangleShape2D_4fy5o")
 
-[node name="ScreenWrap_C" type="Node2D" parent="ShipPlayer" unique_id=2107187508 node_paths=PackedStringArray("parent")]
-script = ExtResource("6_usgp0")
-parent = NodePath("..")
-metadata/_custom_type_script = "uid://bdh1irosr452j"
-
 [node name="HealthUI" type="Node2D" parent="ShipPlayer" unique_id=1413375827 node_paths=PackedStringArray("health_c")]
 script = ExtResource("6_w6vuu")
 health_c = NodePath("../../HealthComponent")
@@ -57,8 +64,3 @@ offset_right = 32.0
 offset_bottom = -40.0
 theme = ExtResource("7_jxkod")
 show_percentage = false
-
-[node name="HealthComponent" type="Node" parent="." unique_id=1759881949]
-script = ExtResource("4_w774p")
-MAX_HEALTH = 15
-metadata/_custom_type_script = "uid://w5ced6gnigvs"

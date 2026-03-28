@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dufojvyx2oh0f"]
+
+[ext_resource type="Script" uid="uid://bah88w2suaaua" path="res://game/component/screen_wrap/screen_wrap_c.gd" id="1_swws0"]
+
+[node name="ScreenWrap_C" type="Node2D" unique_id=1566207073]
+script = ExtResource("1_swws0")

@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://bmei40wsbb27n" path="res://game/asteroid/asteroid_state/state_machine.gd" id="7_yvtuu"]
 [ext_resource type="Script" uid="uid://brliqo4fki81s" path="res://game/asteroid/asteroid_state/s_asteroid_off_screen.gd" id="8_5rby4"]
 [ext_resource type="Script" uid="uid://45yo1vonvmpx" path="res://game/asteroid/asteroid_state/s_asteroid_on_screen.gd" id="8_utpev"]
-[ext_resource type="Script" uid="uid://bdh1irosr452j" path="res://game/component/movement/screen_wrap_c.gd" id="9_5rby4"]
 [ext_resource type="PackedScene" uid="uid://b0j8rbmrofe7b" path="res://game/component/off_screen_c/off_screen_c.tscn" id="9_ronxi"]
 
 [node name="Asteroid" type="RigidBody2D" unique_id=1464636514]
@@ -59,9 +58,3 @@ metadata/_custom_type_script = "uid://brliqo4fki81s"
 [node name="OffScreen_C" parent="." unique_id=705656702 node_paths=PackedStringArray("parent") instance=ExtResource("9_ronxi")]
 unique_name_in_owner = true
 parent = NodePath("..")
-
-[node name="ScreenWrap_C" type="Node2D" parent="." unique_id=1743343877 node_paths=PackedStringArray("parent")]
-unique_name_in_owner = true
-script = ExtResource("9_5rby4")
-parent = NodePath("..")
-metadata/_custom_type_script = "uid://bdh1irosr452j"
