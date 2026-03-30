@@ -8,6 +8,12 @@ extends Node2D
 func _process(delta: float) -> void:
 	var velocity := Vector2.UP.rotated(rotation) * speed
 	position += velocity * delta
+	queue_redraw()
+
+
+func _draw() -> void:
+	draw_set_transform(Vector2.ZERO, 0, Vector2(1, 2))
+	draw_circle(Vector2(0, 0), 4, Color.WHITE, true, -1, true)
 
 
 func _on_timer_timeout() -> void:

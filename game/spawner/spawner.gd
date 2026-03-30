@@ -45,8 +45,6 @@ func spawn_asteroid() -> void:
 		+ randf_range(-ASTEROID_START_ANGLE_VARIATION, ASTEROID_START_ANGLE_VARIATION),
 	)
 	asteroid.set_speed()
-	asteroid.set_rotation_movement()
-
 	spawn_path.progress_ratio += randf_range(.1, .3)
 
 
@@ -60,5 +58,4 @@ func spawn_small_asteroids(asteroids_count: int, global_pos: Vector2) -> void:
 		asteroid.set_initial_position(global_pos)
 		asteroid.set_initial_rotation(angle + randf_range(-ASTEROID_START_ANGLE_VARIATION, ASTEROID_START_ANGLE_VARIATION))
 		asteroid.set_speed()
-		asteroid.set_rotation_movement()
 		angle += PI / asteroids_count

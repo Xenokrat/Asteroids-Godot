@@ -11,5 +11,12 @@ asteroid_type = 2
 unique_name_in_owner = true
 polygon = PackedVector2Array(-48, 32, -61, 15, -68, -9, -61, -40, -47, -52, -28, -63, 8, -66, 49, -51, 55, -35, 66, -16, 68, 0, 61, 30, 45, 54, 23, 69, 1, 67, -12, 48)
 
-[node name="HealthComponent" parent="." index="3" unique_id=1043955643]
+[node name="Polygon2D2" type="Polygon2D" parent="." index="1" unique_id=890171639]
+unique_name_in_owner = true
+position = Vector2(0, 0.06666565)
+scale = Vector2(0.9558824, 0.95555556)
+color = Color(0.017732391, 0.017732391, 0.01773239, 1)
+polygon = PackedVector2Array(-48, 32, -61, 15, -68, -9, -61, -40, -47, -52, -28, -63, 8, -66, 49, -51, 55, -35, 66, -16, 68, 0, 61, 30, 45, 54, 23, 69, 1, 67, -12, 48)
+
+[node name="HealthComponent" parent="." index="4" unique_id=1043955643]
 MAX_HEALTH = 30

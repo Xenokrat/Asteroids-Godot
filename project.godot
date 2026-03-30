@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Asteroids"
-run/main_scene="uid://b6sgu20icdxiy"
+run/main_scene="uid://cug7gm6tl2ip"
 config/features=PackedStringArray("4.6", "Forward Plus")
 run/max_fps=240
 config/icon="res://icon.svg"
@@ -91,3 +91,4 @@ test={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+environment/defaults/default_clear_color=Color(0.060530297, 0.060530372, 0.060530342, 1)

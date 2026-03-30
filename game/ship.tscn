@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bxgtd1f30ho2t" path="res://game/ship.gd" id="1_v1nl0"]
 [ext_resource type="PackedScene" uid="uid://dyqpwj2muabc0" path="res://game/bullet.tscn" id="2_4fy5o"]
-[ext_resource type="Texture2D" uid="uid://de3tm6jamsipo" path="res://icon.svg" id="2_o7edr"]
 [ext_resource type="Script" uid="uid://dv5316krqdhjv" path="res://game/component/hitbox/hitbox_c.gd" id="3_4fy5o"]
 [ext_resource type="Script" uid="uid://w5ced6gnigvs" path="res://game/component/health/health_c.gd" id="4_w774p"]
+[ext_resource type="Texture2D" uid="uid://celaobb4owouu" path="res://assets/visual/test.png" id="5_usgp0"]
 [ext_resource type="Script" uid="uid://dgnq23jom2vyo" path="res://game/health_ui/health_ui.gd" id="6_w6vuu"]
 [ext_resource type="Theme" uid="uid://d1fnn2lg7l03w" path="res://asteroids_theme.tres" id="7_jxkod"]
 [ext_resource type="Script" uid="uid://bah88w2suaaua" path="res://game/component/screen_wrap/screen_wrap_c.gd" id="8_usgp0"]
@@ -33,8 +33,8 @@ unique_name_in_owner = true
 metadata/_edit_group_ = true
 
 [node name="Icon" type="Sprite2D" parent="ShipPlayer" unique_id=109486596]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_o7edr")
+scale = Vector2(0.1, 0.13333334)
+texture = ExtResource("5_usgp0")
 
 [node name="BulletMarker" type="Marker2D" parent="ShipPlayer" unique_id=1473804689]
 unique_name_in_owner = true

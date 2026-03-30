@@ -7,8 +7,6 @@ enum AsteroidType {
 	BIG,
 }
 
-const ANGULAR_VELOCITY_VARIATION = PI / 2
-
 @export var speed: int = 0
 @export var asteroid_type: AsteroidType
 
@@ -45,10 +43,6 @@ func _physics_process(delta: float) -> void:
 
 func set_speed() -> void:
 	add_constant_central_force(Vector2.RIGHT.rotated(rotation) * speed)
-
-
-func set_rotation_movement() -> void:
-	angular_velocity = randf_range(-ANGULAR_VELOCITY_VARIATION, ANGULAR_VELOCITY_VARIATION)
 
 
 func set_initial_position(global_pos: Vector2) -> void:

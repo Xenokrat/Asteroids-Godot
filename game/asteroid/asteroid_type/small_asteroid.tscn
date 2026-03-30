@@ -10,8 +10,12 @@ speed = 30
 unique_name_in_owner = true
 polygon = PackedVector2Array(-11, 11, -16, -3, -6, -13, 6, -22, 18, -12, 22, 9, 16, 21, -2, 23)
 
-[node name="HealthComponent" parent="." index="3" unique_id=1043955643]
-MAX_HEALTH = 5
-
-[node name="StateMachine" parent="." index="5" unique_id=1433151912]
+[node name="Polygon2D2" type="Polygon2D" parent="." index="1" unique_id=1163364043]
 unique_name_in_owner = true
+position = Vector2(0.31578922, 0.044445038)
+scale = Vector2(0.8947368, 0.9111111)
+color = Color(0.0253638, 0.0253638, 0.025363795, 1)
+polygon = PackedVector2Array(-11, 11, -16, -3, -6, -13, 6, -22, 18, -12, 22, 9, 16, 21, -2, 23)
+
+[node name="HealthComponent" parent="." index="4" unique_id=1043955643]
+MAX_HEALTH = 5

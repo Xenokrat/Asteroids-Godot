@@ -10,11 +10,15 @@ asteroid_type = 1
 unique_name_in_owner = true
 polygon = PackedVector2Array(-30, 26, -40, 0, -38, -15, -28, -36, -17, -50, -2, -57, 19, -53, 38, -29, 54, -6, 51, 22, 36, 43, 10, 54, -13, 51)
 
+[node name="Polygon2D2" type="Polygon2D" parent="." index="1" unique_id=1210397727]
+unique_name_in_owner = true
+position = Vector2(0.44681603, -0.081083134)
+scale = Vector2(0.9361701, 0.945946)
+color = Color(0.043039158, 0.04303915, 0.04303915, 1)
+polygon = PackedVector2Array(-30, 26, -40, 0, -38, -15, -28, -36, -17, -50, -2, -57, 19, -53, 38, -29, 54, -6, 51, 22, 36, 43, 10, 54, -13, 51)
+
 [node name="ProgressBar" parent="HealthUI" parent_id_path=PackedInt32Array(1604927) index="0" unique_id=1875006906]
 offset_left = -28.0
 offset_top = -43.0
 offset_right = 30.0
 offset_bottom = -38.0
-
-[node name="StateMachine" parent="." index="5" unique_id=1433151912]
-unique_name_in_owner = true

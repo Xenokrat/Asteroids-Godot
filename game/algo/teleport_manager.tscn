@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bxmhdl7iaj03y"]
+
+[ext_resource type="Script" uid="uid://c4514xh4fcujq" path="res://game/algo/teleport_manager.gd" id="1_hg44o"]
+
+[node name="TeleportManager" type="Node2D" unique_id=489391633]
+script = ExtResource("1_hg44o")

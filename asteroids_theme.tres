@@ -1,5 +1,22 @@
 [gd_resource type="Theme" format=3 uid="uid://d1fnn2lg7l03w"]
 
+[ext_resource type="FontFile" uid="uid://drtts6222ibns" path="res://assets/fonts/Syncopate-Bold.ttf" id="1_i5rbp"]
+[ext_resource type="FontFile" uid="uid://5vvhxkfwh5fs" path="res://assets/fonts/Syncopate-Regular.ttf" id="1_qec2c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i5rbp"]
+bg_color = Color(0.099985994, 0.09998601, 0.099985965, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7a6qi"]
+bg_color = Color(0.1148968, 0.11489681, 0.11489678, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qpxs"]
 bg_color = Color(0.56067175, 0.07765903, 0.0481894, 1)
 border_color = Color(0.04303915, 0.043039165, 0.04303909, 1)
@@ -15,5 +32,11 @@ corner_radius_top_left = 4
 corner_radius_bottom_left = 4
 
 [resource]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_hover_color = Color(0.9490196, 0.9490196, 0.2784314, 1)
+Button/fonts/font = ExtResource("1_i5rbp")
+Button/styles/hover = SubResource("StyleBoxFlat_i5rbp")
+Button/styles/normal = SubResource("StyleBoxFlat_7a6qi")
+Label/fonts/font = ExtResource("1_qec2c")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_8qpxs")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_qec2c")

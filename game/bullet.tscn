@@ -2,17 +2,11 @@
 
 [ext_resource type="Script" uid="uid://l7l52xv4mtt" path="res://game/bullet.gd" id="1_sgh50"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_m5v5u"]
-size = Vector2(10, 30)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sgh50"]
 radius = 5.0
 
 [node name="Bullet" type="Node2D" unique_id=1974902220]
 script = ExtResource("1_sgh50")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2129184497]
-texture = SubResource("PlaceholderTexture2D_m5v5u")
 
 [node name="Timer" type="Timer" parent="." unique_id=1620151642]
 autostart = true
