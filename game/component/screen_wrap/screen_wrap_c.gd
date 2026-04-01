@@ -6,14 +6,8 @@ extends Node2D
 @export var object_shape: Node2D
 
 enum GhostLocation {
-	TOP,
-	TOP_LEFT,
-	TOP_RIGHT,
-	DOWN,
-	DOWN_LEFT,
-	DOWN_RIGHT,
-	LEFT,
-	RIGHT,
+	VERTICAL,
+	HORIZO
 }
 
 var ghost_offsets: Dictionary[GhostLocation, Vector2]
@@ -23,14 +17,14 @@ var ghosts: Dictionary[GhostLocation, Node2D]
 func _ready() -> void:
 	assert(root.has_method("set_object"), "Should have method `set_object`")
 	ghost_offsets = {
-		GhostLocation.TOP: Vector2(0, -ScreenGlobal.screen_size.y),
-		GhostLocation.TOP_LEFT: Vector2(-ScreenGlobal.screen_size.x, -ScreenGlobal.screen_size.y),
-		GhostLocation.TOP_RIGHT: Vector2(+ScreenGlobal.screen_size.x, -ScreenGlobal.screen_size.y),
-		GhostLocation.DOWN: Vector2(0, +ScreenGlobal.screen_size.y),
-		GhostLocation.DOWN_LEFT: Vector2(-ScreenGlobal.screen_size.x, +ScreenGlobal.screen_size.y),
-		GhostLocation.DOWN_RIGHT: Vector2(+ScreenGlobal.screen_size.x, +ScreenGlobal.screen_size.y),
-		GhostLocation.LEFT: Vector2(-ScreenGlobal.screen_size.x, 0),
-		GhostLocation.RIGHT: Vector2(+ScreenGlobal.screen_size.x, 0),
+		GhostLocation.TOP       : Vector2(0                           / 3.0, -ScreenGlobal.screen_size.y / 3.0),
+		GhostLocation.TOP_LEFT  : Vector2(-ScreenGlobal.screen_size.x / 3.0, -ScreenGlobal.screen_size.y / 3.0),
+		GhostLocation.TOP_RIGHT : Vector2(+ScreenGlobal.screen_size.x / 3.0, -ScreenGlobal.screen_size.y / 3.0),
+		GhostLocation.DOWN      : Vector2(0                           / 3.0, +ScreenGlobal.screen_size.y / 3.0),
+		GhostLocation.DOWN_LEFT : Vector2(-ScreenGlobal.screen_size.x / 3.0, +ScreenGlobal.screen_size.y / 3.0),
+		GhostLocation.DOWN_RIGHT: Vector2(+ScreenGlobal.screen_size.x / 3.0, +ScreenGlobal.screen_size.y / 3.0),
+		GhostLocation.LEFT      : Vector2(-ScreenGlobal.screen_size.x / 3.0, 0 / 3.0),
+		GhostLocation.RIGHT     : Vector2(+ScreenGlobal.screen_size.x / 3.0, 0 / 3.0),
 	}
 	for location: GhostLocation in GhostLocation.values():
 		var ghost := object.duplicate()

@@ -3,7 +3,7 @@ extends Node2D
 
 @export var angualr_speed := 2 * PI
 @export var speed := 400
-@export var bullet_scene: PackedScene
+@export var shooter_c: Shooter_C
 
 @onready var ship: = %ShipPlayer
 
@@ -22,21 +22,13 @@ func _process(_delta: float) -> void:
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 
+	if Input.is_action_just_pressed("fire"):
+		shooter_c.shoot()
+
 	ship.look_at(get_global_mouse_position())
 	ship.rotate(PI / 2)
 	ship.velocity = velocity
 	ship.move_and_slide()
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	var bullet: Bullet
-	var bullet_marker: Marker2D = ship.get_node("BulletMarker")
-
-	if event.is_action_pressed("fire"):
-		bullet = bullet_scene.instantiate()
-		add_child(bullet)
-		bullet.global_position = bullet_marker.global_position
-		bullet.rotation = ship.rotation
 
 
 func destroy() -> void:
@@ -45,7 +37,12 @@ func destroy() -> void:
 
 func set_object(new_obj: Node2D) -> void:
 	ship = new_obj
+	print("set_object", ship)
 
 
 func get_object() -> Node2D:
 	return ship
+
+
+func get_shooter_marker() -> Marker2D:
+	return get_node("ShipPlayer/BulletMarker")

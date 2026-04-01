@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://celaobb4owouu" path="res://assets/visual/test.png" id="4_3nlpe"]
 [ext_resource type="PackedScene" uid="uid://c2eihw0ian8on" path="res://game/asteroid/asteroid_type/small_asteroid.tscn" id="5_bx08p"]
 [ext_resource type="PackedScene" uid="uid://bbexy50m2ngh5" path="res://game/asteroid/asteroid_type/mid_asteroid.tscn" id="6_mcftn"]
+[ext_resource type="Texture2D" uid="uid://ddv7niuspnlo6" path="res://assets/visual/1.png" id="7_bx08p"]
 
 [node name="MainMenu" type="Control" unique_id=1711261606]
 layout_mode = 3
@@ -98,6 +99,11 @@ position = Vector2(932, 388)
 
 [node name="Asteroid3" parent="." unique_id=1753804675 instance=ExtResource("5_bx08p")]
 position = Vector2(476, 100)
+
+[node name="1" type="Sprite2D" parent="." unique_id=933197317]
+position = Vector2(756, 88)
+scale = Vector2(0.13125, 0.15833333)
+texture = ExtResource("7_bx08p")
 
 [connection signal="pressed" from="ButtonManager/CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="ButtonManager/CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

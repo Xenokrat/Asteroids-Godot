@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://caforjys5jiwm"]
+
+[ext_resource type="Script" uid="uid://bccr4akfqd7cs" path="res://game/attack/shooter_c.gd" id="1_xueho"]
+
+[node name="Shooter_C" type="Node2D" unique_id=303606358]
+script = ExtResource("1_xueho")

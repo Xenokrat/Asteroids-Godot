@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bakgi0q2tiw81" path="res://game/asteroid/asteroid_type/big_asteroid.tscn" id="2_5tlfd"]
 [ext_resource type="PackedScene" uid="uid://bbexy50m2ngh5" path="res://game/asteroid/asteroid_type/mid_asteroid.tscn" id="3_2hkq5"]
 [ext_resource type="PackedScene" uid="uid://c2eihw0ian8on" path="res://game/asteroid/asteroid_type/small_asteroid.tscn" id="3_v8cro"]
+[ext_resource type="PackedScene" uid="uid://ctix1er6vfh5o" path="res://game/asteroid/asteroid_type/saucer.tscn" id="5_2hkq5"]
 
 [sub_resource type="Curve2D" id="Curve2D_rno13"]
 _data = {
@@ -13,7 +14,7 @@ point_count = 5
 
 [node name="Spawner" type="Node2D" unique_id=67136409]
 script = ExtResource("1_bd2ld")
-asteroids_scenes = Array[PackedScene]([ExtResource("3_v8cro"), ExtResource("3_2hkq5"), ExtResource("2_5tlfd")])
+asteroids_scenes = Array[PackedScene]([ExtResource("3_v8cro"), ExtResource("3_2hkq5"), ExtResource("2_5tlfd"), ExtResource("5_2hkq5")])
 small_asteroid_scene = ExtResource("3_v8cro")
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1467474880]

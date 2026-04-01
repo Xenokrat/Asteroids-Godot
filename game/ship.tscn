@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bxgtd1f30ho2t" path="res://game/ship.gd" id="1_v1nl0"]
 [ext_resource type="PackedScene" uid="uid://dyqpwj2muabc0" path="res://game/bullet.tscn" id="2_4fy5o"]
 [ext_resource type="Script" uid="uid://dv5316krqdhjv" path="res://game/component/hitbox/hitbox_c.gd" id="3_4fy5o"]
+[ext_resource type="Script" uid="uid://bccr4akfqd7cs" path="res://game/attack/shooter_c.gd" id="4_usgp0"]
 [ext_resource type="Script" uid="uid://w5ced6gnigvs" path="res://game/component/health/health_c.gd" id="4_w774p"]
 [ext_resource type="Texture2D" uid="uid://celaobb4owouu" path="res://assets/visual/test.png" id="5_usgp0"]
 [ext_resource type="Script" uid="uid://dgnq23jom2vyo" path="res://game/health_ui/health_ui.gd" id="6_w6vuu"]
@@ -12,9 +13,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4fy5o"]
 size = Vector2(64, 64)
 
-[node name="Ship" type="Node2D" unique_id=432438455]
+[node name="Ship" type="Node2D" unique_id=432438455 node_paths=PackedStringArray("shooter_c")]
 script = ExtResource("1_v1nl0")
-bullet_scene = ExtResource("2_4fy5o")
+shooter_c = NodePath("Shooter_C")
 
 [node name="ScreenWrap_C" type="Node2D" parent="." unique_id=1615057731 node_paths=PackedStringArray("root", "object", "object_shape")]
 script = ExtResource("8_usgp0")
@@ -28,6 +29,12 @@ script = ExtResource("4_w774p")
 MAX_HEALTH = 15
 metadata/_custom_type_script = "uid://w5ced6gnigvs"
 
+[node name="Shooter_C" type="Node2D" parent="." unique_id=1741791643 node_paths=PackedStringArray("root")]
+script = ExtResource("4_usgp0")
+root = NodePath("..")
+bullet_scene = ExtResource("2_4fy5o")
+metadata/_custom_type_script = "uid://bccr4akfqd7cs"
+
 [node name="ShipPlayer" type="CharacterBody2D" parent="." unique_id=974843177]
 unique_name_in_owner = true
 metadata/_edit_group_ = true
@@ -35,10 +42,6 @@ metadata/_edit_group_ = true
 [node name="Icon" type="Sprite2D" parent="ShipPlayer" unique_id=109486596]
 scale = Vector2(0.1, 0.13333334)
 texture = ExtResource("5_usgp0")
-
-[node name="BulletMarker" type="Marker2D" parent="ShipPlayer" unique_id=1473804689]
-unique_name_in_owner = true
-position = Vector2(0, -72)
 
 [node name="HitboxComponent" type="Area2D" parent="ShipPlayer" unique_id=496145251 node_paths=PackedStringArray("health_component")]
 collision_mask = 4
@@ -64,3 +67,7 @@ offset_right = 32.0
 offset_bottom = -40.0
 theme = ExtResource("7_jxkod")
 show_percentage = false
+
+[node name="BulletMarker" type="Marker2D" parent="ShipPlayer" unique_id=1184591996]
+unique_name_in_owner = true
+position = Vector2(0, -32)

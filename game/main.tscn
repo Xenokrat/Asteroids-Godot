@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://7t2pg7j5x5ua" path="res://game/main.gd" id="1_oa506"]
 [ext_resource type="PackedScene" uid="uid://rq5dka4po0my" path="res://game/ship.tscn" id="2_xtpaf"]
 [ext_resource type="PackedScene" uid="uid://ovxjf6sxnne3" path="res://game/spawner/spawner.tscn" id="3_emt18"]
+[ext_resource type="PackedScene" uid="uid://bxmhdl7iaj03y" path="res://game/algo/teleport_manager.tscn" id="4_vop5m"]
 
 [node name="Main" type="Node" unique_id=304713751]
 script = ExtResource("1_oa506")
@@ -11,5 +12,11 @@ script = ExtResource("1_oa506")
 position = Vector2(557, 329)
 
 [node name="Spawner" parent="." unique_id=67136409 instance=ExtResource("3_emt18")]
+position = Vector2(0, 2)
+turn_off = true
+
+[node name="TeleportManager" parent="." unique_id=489391633 node_paths=PackedStringArray("spawner") instance=ExtResource("4_vop5m")]
+spawner = NodePath("../Spawner")
+cell_side_length = 20.0
 
 [editable path="Ship"]
