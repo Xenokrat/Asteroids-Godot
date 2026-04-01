@@ -22,6 +22,7 @@ script = ExtResource("8_usgp0")
 root = NodePath("..")
 object = NodePath("../ShipPlayer")
 object_shape = NodePath("../ShipPlayer/HitboxComponent/CollisionShape2D")
+ghosts_current_configuration = 1
 metadata/_custom_type_script = "uid://bah88w2suaaua"
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1759881949]
