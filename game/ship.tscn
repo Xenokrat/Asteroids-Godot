@@ -30,9 +30,10 @@ script = ExtResource("4_w774p")
 MAX_HEALTH = 15
 metadata/_custom_type_script = "uid://w5ced6gnigvs"
 
-[node name="Shooter_C" type="Node2D" parent="." unique_id=1741791643 node_paths=PackedStringArray("root")]
+[node name="Shooter_C" type="Node2D" parent="." unique_id=1741791643 node_paths=PackedStringArray("bullet_space", "shooting_point")]
 script = ExtResource("4_usgp0")
-root = NodePath("..")
+bullet_space = NodePath("..")
+shooting_point = NodePath("../ShipPlayer/BulletMarker")
 bullet_scene = ExtResource("2_4fy5o")
 metadata/_custom_type_script = "uid://bccr4akfqd7cs"
 
