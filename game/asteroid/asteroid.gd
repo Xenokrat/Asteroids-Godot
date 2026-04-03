@@ -53,6 +53,10 @@ func set_initial_rotation(angle: float) -> void:
 	rotation = angle
 
 
+func set_collition_to_ghost() -> void:
+	print("Called `set_collition_to_ghost`")
+
+
 func destroy() -> void:
 	match asteroid_type:
 		AsteroidType.SMALL:

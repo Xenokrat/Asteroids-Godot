@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c5221rlni4c27" path="res://game/asteroid/asteroid.tscn" id="1_p0l3m"]
 
 [node name="MidAsteroid" unique_id=1464636514 instance=ExtResource("1_p0l3m")]
-speed = 20
+speed = 50
 asteroid_type = 1
 
 [node name="Polygon2D" type="Polygon2D" parent="." index="0" unique_id=1111535584]

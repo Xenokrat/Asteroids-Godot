@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bakgi0q2tiw81" path="res://game/asteroid/asteroid_type/big_asteroid.tscn" id="2_5tlfd"]
 [ext_resource type="PackedScene" uid="uid://bbexy50m2ngh5" path="res://game/asteroid/asteroid_type/mid_asteroid.tscn" id="3_2hkq5"]
 [ext_resource type="PackedScene" uid="uid://c2eihw0ian8on" path="res://game/asteroid/asteroid_type/small_asteroid.tscn" id="3_v8cro"]
-[ext_resource type="PackedScene" uid="uid://ctix1er6vfh5o" path="res://game/asteroid/asteroid_type/saucer.tscn" id="5_2hkq5"]
+[ext_resource type="PackedScene" uid="uid://1ht8hbp0txiv" path="res://game/asteroid/saucer.tscn" id="5_2hkq5"]
 
 [sub_resource type="Curve2D" id="Curve2D_rno13"]
 _data = {
@@ -32,4 +32,9 @@ progress = 3599.999
 wait_time = 2.0
 autostart = true
 
+[node name="DangerTimer" type="Timer" parent="." unique_id=1871472576]
+wait_time = 5.0
+autostart = true
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="DangerTimer" to="." method="_on_danger_timer_timeout"]

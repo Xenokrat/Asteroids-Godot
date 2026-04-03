@@ -4,7 +4,7 @@
 
 [node name="Asteroid" unique_id=1464636514 instance=ExtResource("1_dj802")]
 mass = 0.5
-speed = 30
+speed = 60
 
 [node name="Polygon2D" type="Polygon2D" parent="." index="0" unique_id=1179948119]
 unique_name_in_owner = true

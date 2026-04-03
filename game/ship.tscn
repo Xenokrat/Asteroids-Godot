@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://rq5dka4po0my"]
 
 [ext_resource type="Script" uid="uid://bxgtd1f30ho2t" path="res://game/ship.gd" id="1_v1nl0"]
-[ext_resource type="PackedScene" uid="uid://dyqpwj2muabc0" path="res://game/bullet.tscn" id="2_4fy5o"]
+[ext_resource type="PackedScene" uid="uid://dyqpwj2muabc0" path="res://game/attack/bullet.tscn" id="2_4fy5o"]
 [ext_resource type="Script" uid="uid://dv5316krqdhjv" path="res://game/component/hitbox/hitbox_c.gd" id="3_4fy5o"]
 [ext_resource type="Script" uid="uid://bccr4akfqd7cs" path="res://game/attack/shooter_c.gd" id="4_usgp0"]
 [ext_resource type="Script" uid="uid://w5ced6gnigvs" path="res://game/component/health/health_c.gd" id="4_w774p"]

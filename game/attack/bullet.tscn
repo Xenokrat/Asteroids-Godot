@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dyqpwj2muabc0"]
 
-[ext_resource type="Script" uid="uid://l7l52xv4mtt" path="res://game/bullet.gd" id="1_sgh50"]
+[ext_resource type="Script" uid="uid://l7l52xv4mtt" path="res://game/attack/bullet.gd" id="1_sgh50"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sgh50"]
 radius = 5.0

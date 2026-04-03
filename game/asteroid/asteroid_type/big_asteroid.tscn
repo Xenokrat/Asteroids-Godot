@@ -4,7 +4,7 @@
 
 [node name="BigAsteroid" unique_id=1464636514 instance=ExtResource("1_lpjxe")]
 mass = 2.0
-speed = 20
+speed = 40
 asteroid_type = 2
 
 [node name="Polygon2D" type="Polygon2D" parent="." index="0" unique_id=1321361306]

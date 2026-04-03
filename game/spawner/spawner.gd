@@ -1,14 +1,14 @@
 class_name Spawner
 extends Node2D
 
-const ASTEROID_START_ANGLE_VARIATION := PI / 4
+const ASTEROID_START_ANGLE_VARIATION := PI / 8
 const START_ASTEROID_COUNT := 5
 const ASTEROID_TYPE_SPAWN_PROBABILITY: PackedFloat32Array = [
-	0.4, # small
+	0.5, # small
 	0.3, # mid
 	0.2, # big
-	0.1, # saucer
 ]
+const MINIMAL_SPAWN_WAIT_TIME := 0.5
 
 @export var asteroids_scenes: Array[PackedScene]
 @export var small_asteroid_scene: PackedScene
@@ -37,18 +37,22 @@ func spawn_asteroid() -> void:
 	if turn_off:
 		return
 
-	var asteroid: Asteroid = asteroids_scenes[rng.rand_weighted(ASTEROID_TYPE_SPAWN_PROBABILITY)].instantiate()
-	asteroid.spawner = self
-	add_child(asteroid)
-	asteroids.append(asteroid)
+	var enemy: Node2D = asteroids_scenes[rng.rand_weighted(ASTEROID_TYPE_SPAWN_PROBABILITY)].instantiate()
+	assert(enemy.has_method("set_initial_position"), "No `set_initial_position` method in spawner")
+	assert(enemy.has_method("set_initial_rotation"), "No `set_initial_rotation` method in spawner")
+	assert(enemy.has_method("set_speed"), "No `set_speed` method in spawner")
 
-	asteroid.set_initial_position(spawn_path.global_position)
-	asteroid.set_initial_rotation(
+	enemy.spawner = self
+	add_child(enemy)
+	asteroids.append(enemy)
+
+	enemy.set_initial_position(spawn_path.global_position)
+	enemy.set_initial_rotation(
 		spawn_path.rotation
 		+ PI / 2
 		+ randf_range(-ASTEROID_START_ANGLE_VARIATION, ASTEROID_START_ANGLE_VARIATION),
 	)
-	asteroid.set_speed()
+	enemy.set_speed()
 	spawn_path.progress_ratio += randf_range(.1, .3)
 
 
@@ -72,3 +76,10 @@ func get_astegoids_on_screen() -> Array[Asteroid]:
 		if asteroid.state_machine.current_state is AsteroidOnScreenState:
 			res.append(asteroid)
 	return res
+
+
+func _on_danger_timer_timeout() -> void:
+	spawn_timer.wait_time = max(
+		spawn_timer.wait_time - 0.2,
+		MINIMAL_SPAWN_WAIT_TIME
+	)

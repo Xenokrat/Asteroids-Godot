@@ -1,7 +1,8 @@
 class_name ScreenWrap_C
 extends Node2D
 
-@export var root: Node2D
+const GHOST_LAYER_MASK := 5
+
 @export var object: Node2D
 @export var object_shape: Node2D
 
@@ -22,6 +23,8 @@ enum GhostConfiguration {
 @onready var screen_size := get_viewport_rect().size
 var ghosts: Dictionary[GhostLocation, Node2D]
 var ghosts_positions: Dictionary[GhostLocation, Vector2]
+
+var object_default_collition_layer: Array[int]
 
 
 func update_ghost_configuration() -> void:
@@ -45,14 +48,45 @@ func update_ghost_configuration() -> void:
 
 
 func _ready() -> void:
-	assert(root.has_method("set_object"), "Should have method `set_object`")
-
 	update_ghost_configuration()
 	for location: GhostLocation in GhostLocation.values():
 		var ghost := object.duplicate()
 		ghosts[location] = ghost
 		add_child(ghost)
 		ghost.global_position = object.global_position + ghosts_positions[location]
+
+		# Bad bad bad
+		var node: HitboxComponent = ghost.get_node("HitboxComponent")
+		for collition_layer in range(1, 33):
+			if node.get_collision_layer_value(collition_layer):
+				object_default_collition_layer.append(collition_layer)
+
+
+func update_ghosts_collitions() -> void:
+	for location: GhostLocation in GhostLocation.values():
+		var ghost := ghosts[location]
+		if is_any_point_on_screen(ghost):
+			send_to_default_collition(ghost)
+		else:
+			send_to_ghost_collition(ghost)
+
+
+func send_to_ghost_collition(ghost: Node2D) -> void:
+	var node: HitboxComponent = ghost.get_node("HitboxComponent")
+	for collition_layer in range(1, 33):
+		if collition_layer == GHOST_LAYER_MASK:
+			node.set_collision_layer_value(collition_layer, true)
+		else:
+			node.set_collision_layer_value(collition_layer, false)
+
+
+func send_to_default_collition(ghost: Node2D) -> void:
+	var node: HitboxComponent = ghost.get_node("HitboxComponent")
+	for collition_layer in range(1, 33):
+		if collition_layer in object_default_collition_layer:
+			node.set_collision_layer_value(collition_layer, true)
+		else:
+			node.set_collision_layer_value(collition_layer, false)
 
 
 func _process(_delta: float) -> void:
@@ -61,6 +95,7 @@ func _process(_delta: float) -> void:
 		update_object_position()
 	if should_update_ghost_configuration():
 		update_ghost_configuration()
+	update_ghosts_collitions()
 
 
 func update_object_position() -> void:
@@ -75,6 +110,7 @@ func update_ghosts_position() -> void:
 	for ghost_loc: GhostLocation in GhostLocation.values():
 		ghosts[ghost_loc].global_position = object.global_position + ghosts_positions[ghost_loc]
 		ghosts[ghost_loc].rotation = object.rotation
+
 
 func should_update_ghost_configuration() -> bool:
 	var half_screen_x := screen_size.x / 2.
@@ -105,3 +141,7 @@ func is_all_points_off_screen(object_: Node2D) -> bool:
 
 func is_all_points_on_screen(object_: Node2D) -> bool:
 	return Utils.is_all_points_on_screen(object_, object_shape)
+
+
+func is_any_point_on_screen(object_: Node2D) -> bool:
+	return Utils.is_any_point_on_screen(object_, object_shape)

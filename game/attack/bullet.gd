@@ -4,6 +4,8 @@ extends Node2D
 @export var speed := 800
 @export var damage := 5
 
+@onready var hitbox: Area2D = $HitboxArea2D
+
 
 func _process(delta: float) -> void:
 	var velocity := Vector2.UP.rotated(rotation) * speed

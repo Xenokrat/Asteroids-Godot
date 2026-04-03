@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://1ht8hbp0txiv"]
+
+[ext_resource type="Script" uid="uid://tmrfjuroal6u" path="res://game/asteroid/saucer.gd" id="1_w6rby"]
+[ext_resource type="PackedScene" uid="uid://xd6vbrqw608a" path="res://game/component/health/health_c.tscn" id="1_y2ahy"]
+[ext_resource type="Texture2D" uid="uid://ddv7niuspnlo6" path="res://assets/visual/1.png" id="2_rrdne"]
+[ext_resource type="Script" uid="uid://dgnq23jom2vyo" path="res://game/health_ui/health_ui.gd" id="3_rrdne"]
+[ext_resource type="Theme" uid="uid://d1fnn2lg7l03w" path="res://asteroids_theme.tres" id="4_kl3mj"]
+[ext_resource type="Script" uid="uid://bccr4akfqd7cs" path="res://game/attack/shooter_c.gd" id="4_v85mf"]
+[ext_resource type="Script" uid="uid://dv5316krqdhjv" path="res://game/component/hitbox/hitbox_c.gd" id="5_2031q"]
+[ext_resource type="PackedScene" uid="uid://b0j8rbmrofe7b" path="res://game/component/off_screen_c/off_screen_c.tscn" id="5_h78o8"]
+[ext_resource type="PackedScene" uid="uid://cr0viuqa88555" path="res://game/attack/saucer_bullet.tscn" id="5_v85mf"]
+
+[node name="Saucer" type="Node2D" unique_id=422179058]
+script = ExtResource("1_w6rby")
+
+[node name="Health" parent="." unique_id=471263009 instance=ExtResource("1_y2ahy")]
+MAX_HEALTH = 30
+
+[node name="OffScreen_C" parent="." unique_id=705656702 node_paths=PackedStringArray("parent") instance=ExtResource("5_h78o8")]
+parent = NodePath("../Saucer")
+
+[node name="Shooter_C" type="Node2D" parent="." unique_id=1328997167 node_paths=PackedStringArray("bullet_space", "shooting_point")]
+script = ExtResource("4_v85mf")
+bullet_space = NodePath("..")
+shooting_point = NodePath("../Saucer/BulletMarker")
+bullet_scene = ExtResource("5_v85mf")
+metadata/_custom_type_script = "uid://bccr4akfqd7cs"
+
+[node name="Saucer" type="RigidBody2D" parent="." unique_id=1183638213]
+collision_layer = 2
+collision_mask = 5
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Saucer" unique_id=497809756]
+scale = Vector2(0.14453128, 0.12916668)
+texture = ExtResource("2_rrdne")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Saucer" unique_id=1509345259]
+polygon = PackedVector2Array(-43, 7, 0, -12, 44, 8, 43, 16, -39, 16)
+
+[node name="HealthUI" type="Node2D" parent="Saucer" unique_id=1454439385 node_paths=PackedStringArray("health_c")]
+script = ExtResource("3_rrdne")
+health_c = NodePath("../../Health")
+metadata/_custom_type_script = "uid://dgnq23jom2vyo"
+
+[node name="ProgressBar" type="ProgressBar" parent="Saucer/HealthUI" unique_id=2012700979]
+offset_left = -35.0
+offset_top = -21.0
+offset_right = 35.0
+offset_bottom = -14.0
+theme = ExtResource("4_kl3mj")
+value = 50.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="HitboxComponent" type="Area2D" parent="Saucer" unique_id=1793797995 node_paths=PackedStringArray("health_component")]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("5_2031q")
+health_component = NodePath("../../Health")
+metadata/_custom_type_script = "uid://dv5316krqdhjv"
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Saucer/HitboxComponent" unique_id=1909764927]
+polygon = PackedVector2Array(-43, 7, 0, -12, 44, 8, 43, 16, -39, 16)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Saucer" unique_id=1783636420]
+rect = Rect2(-40, -10, 83, 25)
+
+[node name="BulletMarker" type="Marker2D" parent="Saucer" unique_id=1813954552]
+unique_name_in_owner = true
+position = Vector2(0, 18)
+
+[node name="Timer" type="Timer" parent="." unique_id=1389656256]
+autostart = true
+
+[connection signal="screen_entered" from="Saucer/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
