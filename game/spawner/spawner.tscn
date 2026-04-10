@@ -16,6 +16,8 @@ point_count = 5
 script = ExtResource("1_bd2ld")
 asteroids_scenes = Array[PackedScene]([ExtResource("3_v8cro"), ExtResource("3_2hkq5"), ExtResource("2_5tlfd"), ExtResource("5_2hkq5")])
 small_asteroid_scene = ExtResource("3_v8cro")
+saucer_scene = ExtResource("5_2hkq5")
+turn_off = null
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1467474880]
 position = Vector2(0, -59.07692)
@@ -29,12 +31,29 @@ rotation = -3.1415925
 progress = 3599.999
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=801647193]
-wait_time = 2.0
+wait_time = 3.0
 autostart = true
 
 [node name="DangerTimer" type="Timer" parent="." unique_id=1871472576]
 wait_time = 5.0
 autostart = true
+
+[node name="SaucerTimer" type="Timer" parent="." unique_id=174669828]
+wait_time = 7.0
+one_shot = true
+autostart = true
+
+[node name="Marker2D1" type="Marker2D" parent="." unique_id=631738736]
+position = Vector2(128, -64)
+
+[node name="Marker2D2" type="Marker2D" parent="." unique_id=1993047460]
+position = Vector2(1024, -64)
+
+[node name="Marker2D3" type="Marker2D" parent="." unique_id=1461150294]
+position = Vector2(-64, 128)
+
+[node name="Marker2D4" type="Marker2D" parent="." unique_id=262100364]
+position = Vector2(1216, 128)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="DangerTimer" to="." method="_on_danger_timer_timeout"]

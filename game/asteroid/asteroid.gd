@@ -10,12 +10,12 @@ enum AsteroidType {
 @export var speed: int = 0
 @export var asteroid_type: AsteroidType
 
-@onready var hitbox_c: HitboxComponent = %HitboxComponent
+@onready var hitbox_c: C_Hitbox = %C_Hitbox
 @onready var polygon: Polygon2D = %Polygon2D
 @onready var state_machine: StateMachine = %StateMachine
 @onready var off_screen_c: OffScreen_C = %OffScreen_C
 
-var spawner: Spawner
+@export var spawner: Spawner
 
 
 func _ready() -> void:
@@ -27,6 +27,8 @@ func _ready() -> void:
 	call_deferred("add_child", collision_polygon2)
 
 	state_machine.init(self)
+	if spawner:
+		spawner.add_astegoid(self)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -67,4 +69,5 @@ func destroy() -> void:
 		AsteroidType.BIG:
 			if spawner:
 				spawner.spawn_small_asteroids(4, global_position)
+	spawner.remove_asteroid(self)
 	queue_free()

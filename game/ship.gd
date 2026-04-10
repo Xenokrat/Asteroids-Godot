@@ -25,10 +25,16 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("fire"):
 		shooter_c.shoot()
 
+	if Input.is_action_just_pressed("bomb"):
+		if PlayerResources.use_bomb():
+			shooter_c.shoot_bomb()
+
 	ship.look_at(get_global_mouse_position())
 	ship.rotate(PI / 2)
 	ship.velocity = velocity
 	ship.move_and_slide()
+
+	queue_redraw()
 
 
 func destroy() -> void:
@@ -46,3 +52,9 @@ func get_object() -> Node2D:
 
 func get_shooter_marker() -> Marker2D:
 	return get_node("ShipPlayer/BulletMarker")
+
+
+func _draw() -> void:
+	for i in PlayerResources.bombs:
+		draw_circle(ship.position + Vector2(45, -25 + i*20), 8, Color.WHITE, true)
+		draw_circle(ship.position + Vector2(45, -25 + i*20), 6, Color.BLACK, true)

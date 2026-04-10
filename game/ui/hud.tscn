@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://ebxw17au72n4"]
+
+[ext_resource type="Script" uid="uid://dhkmdw1xsks5l" path="res://game/ui/hud.gd" id="2_eur44"]
+
+[node name="Hud" type="Node2D" unique_id=1406534678]
+script = ExtResource("2_eur44")
+
+[node name="BombHContainer" type="VBoxContainer" parent="." unique_id=1807991781]
+offset_left = 22.0
+offset_top = -33.0
+offset_right = 53.0
+offset_bottom = 79.0

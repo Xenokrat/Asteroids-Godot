@@ -20,3 +20,6 @@ polygon = PackedVector2Array(-48, 32, -61, 15, -68, -9, -61, -40, -47, -52, -28,
 
 [node name="HealthComponent" parent="." index="4" unique_id=1043955643]
 MAX_HEALTH = 30
+
+[node name="SimpleScreenWrap" parent="." index="7" unique_id=1747160478]
+offset = 120

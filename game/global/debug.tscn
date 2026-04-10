@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://rqhi0getidmf"]
+
+[ext_resource type="Script" uid="uid://bd8jyy56iqvve" path="res://game/global/debug.gd" id="1_ldg43"]
+
+[node name="Debug" type="Node" unique_id=1059567020]
+script = ExtResource("1_ldg43")

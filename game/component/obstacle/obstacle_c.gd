@@ -1,7 +1,7 @@
 class_name ObstacleC
 extends Node
 
-@export var hitbox_c: HitboxComponent
+@export var hitbox_c: C_Hitbox
 
 
 func _ready() -> void:

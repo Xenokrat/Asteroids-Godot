@@ -14,16 +14,19 @@ script = ExtResource("1_oa506")
 [node name="Ship" parent="." unique_id=79760937 instance=ExtResource("2_xtpaf")]
 position = Vector2(557, 329)
 
-[node name="Spawner" parent="." unique_id=67136409 instance=ExtResource("3_emt18")]
+[node name="Spawner" parent="." unique_id=67136409 node_paths=PackedStringArray("player") instance=ExtResource("3_emt18")]
 position = Vector2(0, 2)
 asteroids_scenes = Array[PackedScene]([ExtResource("4_wjctj"), ExtResource("5_xkbyp"), ExtResource("6_lx3aj")])
+player = NodePath("../Ship")
 turn_off = true
 
-[node name="TeleportManager" parent="." unique_id=489391633 node_paths=PackedStringArray("spawner") instance=ExtResource("4_vop5m")]
-spawner = NodePath("../Spawner")
-cell_side_length = 20.0
+[node name="SaucerTimer" parent="Spawner" index="3" unique_id=174669828]
+wait_time = 1.0
 
-[node name="BigAsteroid" parent="." unique_id=1464636514 instance=ExtResource("6_lx3aj")]
-position = Vector2(18, 255)
+[node name="TeleportManager" parent="." unique_id=489391633 node_paths=PackedStringArray("spawner", "object") instance=ExtResource("4_vop5m")]
+spawner = NodePath("../Spawner")
+cell_side_length = 96.0
+object = NodePath("../Ship/ShipPlayer")
 
 [editable path="Ship"]
+[editable path="Spawner"]

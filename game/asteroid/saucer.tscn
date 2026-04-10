@@ -12,6 +12,7 @@
 
 [node name="Saucer" type="Node2D" unique_id=422179058]
 script = ExtResource("1_w6rby")
+speed = 180
 
 [node name="Health" parent="." unique_id=471263009 instance=ExtResource("1_y2ahy")]
 MAX_HEALTH = 30
@@ -19,9 +20,8 @@ MAX_HEALTH = 30
 [node name="OffScreen_C" parent="." unique_id=705656702 node_paths=PackedStringArray("parent") instance=ExtResource("5_h78o8")]
 parent = NodePath("../Saucer")
 
-[node name="Shooter_C" type="Node2D" parent="." unique_id=1328997167 node_paths=PackedStringArray("bullet_space", "shooting_point")]
+[node name="Shooter_C" type="Node2D" parent="." unique_id=1328997167 node_paths=PackedStringArray("shooting_point")]
 script = ExtResource("4_v85mf")
-bullet_space = NodePath("..")
 shooting_point = NodePath("../Saucer/BulletMarker")
 bullet_scene = ExtResource("5_v85mf")
 metadata/_custom_type_script = "uid://bccr4akfqd7cs"
@@ -70,8 +70,11 @@ rect = Rect2(-40, -10, 83, 25)
 unique_name_in_owner = true
 position = Vector2(0, 18)
 
-[node name="Timer" type="Timer" parent="." unique_id=1389656256]
-autostart = true
+[node name="AttackTimer" type="Timer" parent="." unique_id=1389656256]
+
+[node name="MovingTimer" type="Timer" parent="." unique_id=697915970]
+wait_time = 2.0
+one_shot = true
 
 [connection signal="screen_entered" from="Saucer/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_timer_timeout"]

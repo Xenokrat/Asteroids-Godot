@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://byotw7sww6q25"]
+
+[ext_resource type="Script" uid="uid://681lq1erxbvt" path="res://game/attack/bomb.gd" id="1_8y2qr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ixjy"]
+radius = 80.0
+
+[node name="Bomb" type="Node2D" unique_id=41670267]
+script = ExtResource("1_8y2qr")
+
+[node name="ExplosionArea" type="Area2D" parent="." unique_id=867210853]
+collision_layer = 4
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea" unique_id=1014885174]
+shape = SubResource("CircleShape2D_0ixjy")
+
+[connection signal="area_entered" from="ExplosionArea" to="." method="_on_explosion_area_area_entered"]

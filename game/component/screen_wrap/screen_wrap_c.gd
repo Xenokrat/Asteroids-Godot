@@ -23,8 +23,9 @@ enum GhostConfiguration {
 @onready var screen_size := get_viewport_rect().size
 var ghosts: Dictionary[GhostLocation, Node2D]
 var ghosts_positions: Dictionary[GhostLocation, Vector2]
+var ghosts_collisions: Dictionary[GhostLocation, Array]
 
-var object_default_collition_layer: Array[int]
+var object_default_collition_layer: int
 
 
 func update_ghost_configuration() -> void:
@@ -56,37 +57,39 @@ func _ready() -> void:
 		ghost.global_position = object.global_position + ghosts_positions[location]
 
 		# Bad bad bad
-		var node: HitboxComponent = ghost.get_node("HitboxComponent")
-		for collition_layer in range(1, 33):
-			if node.get_collision_layer_value(collition_layer):
-				object_default_collition_layer.append(collition_layer)
+		# NOTE: checking only for TOP-level children, will not work for more nested
+		# collition objects
+		ghosts_collisions[location] = []
+		if ghost is CollisionObject2D:
+			ghosts_collisions[location].append(ghost)
+
+		for child in ghost.get_children():
+			if child is CollisionObject2D:
+				ghosts_collisions[location].append(child)
+
+		# WARNING: this assumes that all object's collision layers are the same
+		object_default_collition_layer = ghost.collision_layer
 
 
 func update_ghosts_collitions() -> void:
-	for location: GhostLocation in GhostLocation.values():
-		var ghost := ghosts[location]
+	for ghost_location: GhostLocation in GhostLocation.values():
+		var ghost: Node2D = ghosts[ghost_location]
 		if is_any_point_on_screen(ghost):
-			send_to_default_collition(ghost)
+			send_to_default_collition(ghost_location)
 		else:
-			send_to_ghost_collition(ghost)
+			send_to_ghost_collition(ghost_location)
 
 
-func send_to_ghost_collition(ghost: Node2D) -> void:
-	var node: HitboxComponent = ghost.get_node("HitboxComponent")
-	for collition_layer in range(1, 33):
-		if collition_layer == GHOST_LAYER_MASK:
-			node.set_collision_layer_value(collition_layer, true)
-		else:
-			node.set_collision_layer_value(collition_layer, false)
+func send_to_ghost_collition(ghost_location: GhostLocation) -> void:
+	var collision_objects := ghosts_collisions[ghost_location]
+	for collision_object: CollisionObject2D in collision_objects:
+		collision_object.collision_layer = (1 << GHOST_LAYER_MASK)
 
 
-func send_to_default_collition(ghost: Node2D) -> void:
-	var node: HitboxComponent = ghost.get_node("HitboxComponent")
-	for collition_layer in range(1, 33):
-		if collition_layer in object_default_collition_layer:
-			node.set_collision_layer_value(collition_layer, true)
-		else:
-			node.set_collision_layer_value(collition_layer, false)
+func send_to_default_collition(ghost_location: GhostLocation) -> void:
+	var collision_objects := ghosts_collisions[ghost_location]
+	for collision_object: CollisionObject2D in collision_objects:
+		collision_object.collision_layer = object_default_collition_layer
 
 
 func _process(_delta: float) -> void:

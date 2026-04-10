@@ -1,6 +1,8 @@
 class_name AsteroidOnScreenState
 extends State
 
+@export var simple_screen_wrap: SimpleScreenWrap
+
 var angular_velocity: float
 
 
@@ -10,6 +12,7 @@ func _ready() -> void:
 
 func enter() -> void:
 	(parent as Asteroid).off_screen_c.deactivate()
+	simple_screen_wrap.activate()
 
 
 func process_frame(_delta: float) -> State:

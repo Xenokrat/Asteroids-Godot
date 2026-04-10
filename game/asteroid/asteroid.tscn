@@ -9,12 +9,13 @@
 [ext_resource type="Script" uid="uid://brliqo4fki81s" path="res://game/asteroid/asteroid_state/s_asteroid_off_screen.gd" id="8_5rby4"]
 [ext_resource type="Script" uid="uid://45yo1vonvmpx" path="res://game/asteroid/asteroid_state/s_asteroid_on_screen.gd" id="8_utpev"]
 [ext_resource type="PackedScene" uid="uid://b0j8rbmrofe7b" path="res://game/component/off_screen_c/off_screen_c.tscn" id="9_ronxi"]
+[ext_resource type="Script" uid="uid://df6n1gfvqw00y" path="res://game/component/screen_wrap/simple_screen_wrap.gd" id="10_5rby4"]
 
 [node name="Asteroid" type="RigidBody2D" unique_id=1464636514]
 gravity_scale = 0.0
 script = ExtResource("1_xqk6a")
 
-[node name="HitboxComponent" parent="." unique_id=1674257809 node_paths=PackedStringArray("health_component") instance=ExtResource("1_ygxnk")]
+[node name="C_Hitbox" parent="." unique_id=1674257809 node_paths=PackedStringArray("health_component") instance=ExtResource("1_ygxnk")]
 unique_name_in_owner = true
 collision_layer = 2
 collision_mask = 5
@@ -46,8 +47,9 @@ script = ExtResource("7_yvtuu")
 starting_state = NodePath("S_AsteroidOffScreen")
 metadata/_custom_type_script = "uid://bmei40wsbb27n"
 
-[node name="S_AsteroidOnScreen" type="Node" parent="StateMachine" unique_id=1579152739]
+[node name="S_AsteroidOnScreen" type="Node" parent="StateMachine" unique_id=1579152739 node_paths=PackedStringArray("simple_screen_wrap")]
 script = ExtResource("8_utpev")
+simple_screen_wrap = NodePath("../../SimpleScreenWrap")
 metadata/_custom_type_script = "uid://45yo1vonvmpx"
 
 [node name="S_AsteroidOffScreen" type="Node" parent="StateMachine" unique_id=1577890606 node_paths=PackedStringArray("asteroid_on_screen")]
@@ -58,3 +60,8 @@ metadata/_custom_type_script = "uid://brliqo4fki81s"
 [node name="OffScreen_C" parent="." unique_id=705656702 node_paths=PackedStringArray("parent") instance=ExtResource("9_ronxi")]
 unique_name_in_owner = true
 parent = NodePath("..")
+
+[node name="SimpleScreenWrap" type="Node2D" parent="." unique_id=1747160478 node_paths=PackedStringArray("parent")]
+script = ExtResource("10_5rby4")
+parent = NodePath("..")
+metadata/_custom_type_script = "uid://df6n1gfvqw00y"
