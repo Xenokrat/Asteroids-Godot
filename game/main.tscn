@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://c2eihw0ian8on" path="res://game/asteroid/asteroid_type/small_asteroid.tscn" id="4_wjctj"]
 [ext_resource type="PackedScene" uid="uid://bbexy50m2ngh5" path="res://game/asteroid/asteroid_type/mid_asteroid.tscn" id="5_xkbyp"]
 [ext_resource type="PackedScene" uid="uid://bakgi0q2tiw81" path="res://game/asteroid/asteroid_type/big_asteroid.tscn" id="6_lx3aj"]
+[ext_resource type="PackedScene" uid="uid://ebxw17au72n4" path="res://game/ui/hud.tscn" id="8_xkbyp"]
+[ext_resource type="PackedScene" uid="uid://b3h7s6nnc5ed6" path="res://game/bonus/bonus_manager.tscn" id="9_lx3aj"]
+[ext_resource type="PackedScene" uid="uid://j6qf34kitx5d" path="res://game/bonus/bonus.tscn" id="10_itumj"]
 
 [node name="Main" type="Node" unique_id=304713751]
 script = ExtResource("1_oa506")
@@ -18,15 +21,19 @@ position = Vector2(557, 329)
 position = Vector2(0, 2)
 asteroids_scenes = Array[PackedScene]([ExtResource("4_wjctj"), ExtResource("5_xkbyp"), ExtResource("6_lx3aj")])
 player = NodePath("../Ship")
-turn_off = true
-
-[node name="SaucerTimer" parent="Spawner" index="3" unique_id=174669828]
-wait_time = 1.0
+turn_off = false
 
 [node name="TeleportManager" parent="." unique_id=489391633 node_paths=PackedStringArray("spawner", "object") instance=ExtResource("4_vop5m")]
 spawner = NodePath("../Spawner")
 cell_side_length = 96.0
 object = NodePath("../Ship/ShipPlayer")
+
+[node name="Hud" parent="." unique_id=1032876770 instance=ExtResource("8_xkbyp")]
+
+[node name="BonusManager" parent="." unique_id=802326016 node_paths=PackedStringArray("spawner", "player") instance=ExtResource("9_lx3aj")]
+spawner = NodePath("../Spawner")
+player = NodePath("../Ship")
+bonus_scene = ExtResource("10_itumj")
 
 [editable path="Ship"]
 [editable path="Spawner"]

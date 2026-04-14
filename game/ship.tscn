@@ -14,6 +14,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4fy5o"]
 size = Vector2(64, 64)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kvuh0"]
+radius = 64.0
+
 [node name="Ship" type="Node2D" unique_id=432438455 node_paths=PackedStringArray("shooter_c")]
 script = ExtResource("1_v1nl0")
 shooter_c = NodePath("Shooter_C")
@@ -75,3 +78,12 @@ show_percentage = false
 [node name="BulletMarker" type="Marker2D" parent="ShipPlayer" unique_id=1184591996]
 unique_name_in_owner = true
 position = Vector2(0, -32)
+
+[node name="Shield" type="StaticBody2D" parent="ShipPlayer" unique_id=1396194112]
+unique_name_in_owner = true
+collision_layer = 16
+collision_mask = 6
+collision_priority = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShipPlayer/Shield" unique_id=1951010094]
+shape = SubResource("CircleShape2D_kvuh0")

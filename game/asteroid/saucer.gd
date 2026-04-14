@@ -39,6 +39,7 @@ func _process(delta: float) -> void:
 
 
 func destroy() -> void:
+	PlayerResources.update_score(PlayerResources.SCORE_SAUCER_ASTEROID)
 	queue_free()
 
 

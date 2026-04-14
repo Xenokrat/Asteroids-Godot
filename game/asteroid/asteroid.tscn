@@ -12,6 +12,8 @@
 [ext_resource type="Script" uid="uid://df6n1gfvqw00y" path="res://game/component/screen_wrap/simple_screen_wrap.gd" id="10_5rby4"]
 
 [node name="Asteroid" type="RigidBody2D" unique_id=1464636514]
+collision_layer = 2
+collision_mask = 19
 gravity_scale = 0.0
 script = ExtResource("1_xqk6a")
 
@@ -57,9 +59,15 @@ script = ExtResource("8_5rby4")
 asteroid_on_screen = NodePath("../S_AsteroidOnScreen")
 metadata/_custom_type_script = "uid://brliqo4fki81s"
 
-[node name="OffScreen_C" parent="." unique_id=705656702 node_paths=PackedStringArray("parent") instance=ExtResource("9_ronxi")]
+[node name="OffScreen_C" parent="." unique_id=705656702 node_paths=PackedStringArray("parent", "indicator") instance=ExtResource("9_ronxi")]
 unique_name_in_owner = true
 parent = NodePath("..")
+indicator = NodePath("OffScreenIndicator2")
+
+[node name="OffScreenIndicator2" type="Polygon2D" parent="OffScreen_C" unique_id=7247705]
+unique_name_in_owner = true
+position = Vector2(0, 8)
+polygon = PackedVector2Array(0, -12, -8, 20, 0, 16, 8, 20)
 
 [node name="SimpleScreenWrap" type="Node2D" parent="." unique_id=1747160478 node_paths=PackedStringArray("parent")]
 script = ExtResource("10_5rby4")

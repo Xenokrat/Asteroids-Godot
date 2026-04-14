@@ -1,6 +1,9 @@
 class_name Asteroid
 extends RigidBody2D
 
+@warning_ignore("unused_signal")
+signal asteroid_destroyed(type: AsteroidType, global_position: Vector2)
+
 enum AsteroidType {
 	SMALL,
 	MID,
@@ -62,12 +65,15 @@ func set_collition_to_ghost() -> void:
 func destroy() -> void:
 	match asteroid_type:
 		AsteroidType.SMALL:
-			pass
+			PlayerResources.update_score(PlayerResources.SCORE_SMALL_ASTEROID)
 		AsteroidType.MID:
 			if spawner:
 				spawner.spawn_small_asteroids(2, global_position)
+			PlayerResources.update_score(PlayerResources.SCORE_MID_ASTEROID)
 		AsteroidType.BIG:
 			if spawner:
 				spawner.spawn_small_asteroids(4, global_position)
+			PlayerResources.update_score(PlayerResources.SCORE_BIG_ASTEROID)
 	spawner.remove_asteroid(self)
+	asteroid_destroyed.emit(asteroid_type, global_position)
 	queue_free()

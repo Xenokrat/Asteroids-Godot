@@ -2,23 +2,28 @@
 
 [ext_resource type="Script" uid="uid://tmrfjuroal6u" path="res://game/asteroid/saucer.gd" id="1_w6rby"]
 [ext_resource type="PackedScene" uid="uid://xd6vbrqw608a" path="res://game/component/health/health_c.tscn" id="1_y2ahy"]
-[ext_resource type="Texture2D" uid="uid://ddv7niuspnlo6" path="res://assets/visual/1.png" id="2_rrdne"]
 [ext_resource type="Script" uid="uid://dgnq23jom2vyo" path="res://game/health_ui/health_ui.gd" id="3_rrdne"]
 [ext_resource type="Theme" uid="uid://d1fnn2lg7l03w" path="res://asteroids_theme.tres" id="4_kl3mj"]
+[ext_resource type="Texture2D" uid="uid://blo0jg2o5t0bm" path="res://assets/visual/warn-sign.svg" id="4_rkpx4"]
 [ext_resource type="Script" uid="uid://bccr4akfqd7cs" path="res://game/attack/shooter_c.gd" id="4_v85mf"]
 [ext_resource type="Script" uid="uid://dv5316krqdhjv" path="res://game/component/hitbox/hitbox_c.gd" id="5_2031q"]
 [ext_resource type="PackedScene" uid="uid://b0j8rbmrofe7b" path="res://game/component/off_screen_c/off_screen_c.tscn" id="5_h78o8"]
 [ext_resource type="PackedScene" uid="uid://cr0viuqa88555" path="res://game/attack/saucer_bullet.tscn" id="5_v85mf"]
+[ext_resource type="Texture2D" uid="uid://ou8mnekrl838" path="res://assets/visual/saucer.svg" id="6_v85mf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rkpx4"]
+radius = 76.6942
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_02mhi"]
+radius = 29.0
+height = 78.0
 
 [node name="Saucer" type="Node2D" unique_id=422179058]
 script = ExtResource("1_w6rby")
-speed = 180
+speed = 150
 
 [node name="Health" parent="." unique_id=471263009 instance=ExtResource("1_y2ahy")]
 MAX_HEALTH = 30
-
-[node name="OffScreen_C" parent="." unique_id=705656702 node_paths=PackedStringArray("parent") instance=ExtResource("5_h78o8")]
-parent = NodePath("../Saucer")
 
 [node name="Shooter_C" type="Node2D" parent="." unique_id=1328997167 node_paths=PackedStringArray("shooting_point")]
 script = ExtResource("4_v85mf")
@@ -26,17 +31,18 @@ shooting_point = NodePath("../Saucer/BulletMarker")
 bullet_scene = ExtResource("5_v85mf")
 metadata/_custom_type_script = "uid://bccr4akfqd7cs"
 
-[node name="Saucer" type="RigidBody2D" parent="." unique_id=1183638213]
+[node name="Saucer" type="StaticBody2D" parent="." unique_id=710641861]
 collision_layer = 2
-collision_mask = 5
-gravity_scale = 0.0
+collision_mask = 18
 
 [node name="Sprite2D" type="Sprite2D" parent="Saucer" unique_id=497809756]
-scale = Vector2(0.14453128, 0.12916668)
-texture = ExtResource("2_rrdne")
+texture_filter = 1
+position = Vector2(1, 16)
+scale = Vector2(2.4375, 2.2500002)
+texture = ExtResource("6_v85mf")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Saucer" unique_id=1509345259]
-polygon = PackedVector2Array(-43, 7, 0, -12, 44, 8, 43, 16, -39, 16)
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Saucer" unique_id=1229576121]
+shape = SubResource("CircleShape2D_rkpx4")
 
 [node name="HealthUI" type="Node2D" parent="Saucer" unique_id=1454439385 node_paths=PackedStringArray("health_c")]
 script = ExtResource("3_rrdne")
@@ -60,8 +66,10 @@ script = ExtResource("5_2031q")
 health_component = NodePath("../../Health")
 metadata/_custom_type_script = "uid://dv5316krqdhjv"
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Saucer/HitboxComponent" unique_id=1909764927]
-polygon = PackedVector2Array(-43, 7, 0, -12, 44, 8, 43, 16, -39, 16)
+[node name="CollisionPolygon2D2" type="CollisionShape2D" parent="Saucer/HitboxComponent" unique_id=1146784257]
+position = Vector2(2, 15)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_02mhi")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Saucer" unique_id=1783636420]
 rect = Rect2(-40, -10, 83, 25)
@@ -70,11 +78,22 @@ rect = Rect2(-40, -10, 83, 25)
 unique_name_in_owner = true
 position = Vector2(0, 18)
 
+[node name="OffScreen_C" parent="." unique_id=705656702 node_paths=PackedStringArray("parent", "indicator") instance=ExtResource("5_h78o8")]
+texture_filter = 1
+parent = NodePath("../Saucer")
+indicator = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="OffScreen_C" unique_id=2022977890]
+scale = Vector2(2.5, 2.25)
+texture = ExtResource("4_rkpx4")
+
 [node name="AttackTimer" type="Timer" parent="." unique_id=1389656256]
 
 [node name="MovingTimer" type="Timer" parent="." unique_id=697915970]
-wait_time = 2.0
+wait_time = 3.0
 one_shot = true
 
 [connection signal="screen_entered" from="Saucer/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_timer_timeout"]
+
+[editable path="OffScreen_C"]

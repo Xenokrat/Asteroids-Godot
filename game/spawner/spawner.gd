@@ -1,6 +1,12 @@
 class_name Spawner
 extends Node2D
 
+@warning_ignore("unused_signal")
+signal asteroid_destroyed(type: Asteroid.AsteroidType, global_position: Vector2)
+
+@warning_ignore("unused_signal")
+signal saucer_destroyed(global_position: Vector2)
+
 enum {
 	DANGER_LEVEL1 = 0,
 	DANGER_LEVEL2,
@@ -82,6 +88,7 @@ func spawn_asteroid() -> void:
 	)
 	asteroid.set_speed()
 	spawn_path.progress_ratio += randf_range(.1, .3)
+	asteroid.asteroid_destroyed.connect(_on_asteroid_destroyed)
 
 
 func spawn_small_asteroids(asteroids_count: int, global_pos: Vector2) -> void:
@@ -140,3 +147,12 @@ func _on_saucer_timer_timeout() -> void:
 	saucer.global_position = spawn_marker.global_position
 	saucer.player = player
 	saucer.shooter_c.projectile_space = self
+
+
+func _on_asteroid_destroyed(type: Asteroid.AsteroidType, global_position_: Vector2) -> void:
+	asteroid_destroyed.emit(type, global_position_)
+
+
+func _on_saucer_destroyed(global_position_: Vector2) -> void:
+	# TODO
+	saucer_destroyed.emit(global_position_)

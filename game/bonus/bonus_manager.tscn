@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b3h7s6nnc5ed6"]
+
+[ext_resource type="Script" uid="uid://du8apbdayxnbx" path="res://game/bonus/bonus_manager.gd" id="1_tnqfe"]
+
+[node name="BonusManager" type="Node" unique_id=802326016]
+script = ExtResource("1_tnqfe")
+
+[node name="TripleShootTimer" type="Timer" parent="." unique_id=596020151]
+wait_time = 7.0
+one_shot = true
+
+[node name="ShieldTimer" type="Timer" parent="." unique_id=924480212]
+wait_time = 5.0

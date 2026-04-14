@@ -13,8 +13,8 @@ const EDGE_OFFSET := 20
 
 @export var is_active: bool
 @export var parent: Node2D
+@export var indicator: Node2D
 
-@onready var indicator_polygon: Polygon2D = %OffScreenIndicator
 @onready var screen_size: Vector2 = get_viewport_rect().size
 
 
@@ -24,12 +24,12 @@ func _ready() -> void:
 
 func deactivate() -> void:
 	is_active = false
-	indicator_polygon.visible = false
+	indicator.visible = false
 
 
 func activate() -> void:
 	is_active = true
-	indicator_polygon.visible = true
+	indicator.visible = true
 
 
 func _process(_delta: float) -> void:

@@ -3,7 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://dyqpwj2muabc0" path="res://game/attack/bullet.tscn" id="1_g1yhh"]
 
 [node name="SaucerBullet" unique_id=1974902220 instance=ExtResource("1_g1yhh")]
-speed = 500
+speed = 400
 
 [node name="HitboxArea2D" parent="." index="1" unique_id=818870062]
-collision_mask = 5
+collision_mask = 21
+
+[connection signal="body_entered" from="HitboxArea2D" to="." method="_on_hitbox_area_2d_body_entered"]

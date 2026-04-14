@@ -9,6 +9,7 @@ radius = 5.0
 script = ExtResource("1_sgh50")
 
 [node name="Timer" type="Timer" parent="." unique_id=1620151642]
+wait_time = 1.5
 autostart = true
 
 [node name="HitboxArea2D" type="Area2D" parent="." unique_id=818870062]

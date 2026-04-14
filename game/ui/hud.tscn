@@ -1,12 +1,90 @@
 [gd_scene format=3 uid="uid://ebxw17au72n4"]
 
+[ext_resource type="Theme" uid="uid://d1fnn2lg7l03w" path="res://asteroids_theme.tres" id="1_eur44"]
 [ext_resource type="Script" uid="uid://dhkmdw1xsks5l" path="res://game/ui/hud.gd" id="2_eur44"]
+[ext_resource type="FontFile" uid="uid://drtts6222ibns" path="res://assets/fonts/Syncopate-Bold.ttf" id="3_aco40"]
+[ext_resource type="Texture2D" uid="uid://qc61y4fdntmt" path="res://assets/visual/triple-shot.svg" id="4_wsmuv"]
 
-[node name="Hud" type="Node2D" unique_id=1406534678]
+[node name="Hud" type="Control" unique_id=1032876770]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_eur44")
 script = ExtResource("2_eur44")
 
 [node name="BombHContainer" type="VBoxContainer" parent="." unique_id=1807991781]
+layout_mode = 0
 offset_left = 22.0
-offset_top = -33.0
-offset_right = 53.0
-offset_bottom = 79.0
+offset_top = 14.0
+offset_right = 84.0
+offset_bottom = 126.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BombHContainer" unique_id=1200977955]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BombHContainer/HBoxContainer" unique_id=1567717014]
+layout_mode = 2
+text = "Lives"
+
+[node name="Label2" type="Label" parent="BombHContainer/HBoxContainer" unique_id=1292045357]
+layout_mode = 2
+text = "15"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="BombHContainer" unique_id=195128297]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BombHContainer/HBoxContainer3" unique_id=1472893264]
+layout_mode = 2
+text = "Bombs: "
+
+[node name="Label2" type="Label" parent="BombHContainer/HBoxContainer3" unique_id=751992773]
+layout_mode = 2
+text = "3"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="BombHContainer" unique_id=1232172522]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BombHContainer/HBoxContainer2" unique_id=692572642]
+layout_mode = 2
+text = "Teleports"
+
+[node name="Label2" type="Label" parent="BombHContainer/HBoxContainer2" unique_id=1799441551]
+layout_mode = 2
+text = "1"
+
+[node name="ScoreLabel" type="RichTextLabel" parent="." unique_id=1077957319]
+unique_name_in_owner = true
+layout_mode = 1
+offset_right = 1152.0
+offset_bottom = 72.0
+theme_override_fonts/bold_font = ExtResource("3_aco40")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "[b]0[/b]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BonusesVBox" type="VBoxContainer" parent="." unique_id=1774964760]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1048.0
+offset_top = 32.0
+offset_right = 1120.0
+offset_bottom = 103.0
+
+[node name="TripleBonusTexture" type="TextureRect" parent="BonusesVBox" unique_id=1505067511]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_wsmuv")
+
+[node name="TripleBonusProgressBar" type="ProgressBar" parent="BonusesVBox" unique_id=1081964368]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+size_flags_vertical = 1
+value = 100.0
+show_percentage = false

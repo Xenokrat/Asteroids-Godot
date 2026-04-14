@@ -16,11 +16,16 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 run/max_fps=240
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://cx64vsf4c2dcs"
+
 [autoload]
 
 ScreenGlobal="*uid://crdlfbvaciido"
 PlayerResources="*uid://dx6escpw3pi5k"
 Debug="*uid://rqhi0getidmf"
+Audio="*uid://b443j6fkg8vik"
 
 [debug]
 
@@ -96,6 +101,7 @@ bomb={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Enemies"
 2d_physics/layer_3="Projectiles"
+2d_physics/layer_5="PlayerShield"
 
 [physics]
 

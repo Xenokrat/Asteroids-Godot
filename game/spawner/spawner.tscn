@@ -40,20 +40,19 @@ autostart = true
 
 [node name="SaucerTimer" type="Timer" parent="." unique_id=174669828]
 wait_time = 7.0
-one_shot = true
 autostart = true
 
 [node name="Marker2D1" type="Marker2D" parent="." unique_id=631738736]
-position = Vector2(128, -64)
+position = Vector2(128, -128)
 
 [node name="Marker2D2" type="Marker2D" parent="." unique_id=1993047460]
-position = Vector2(1024, -64)
+position = Vector2(1024, -128)
 
 [node name="Marker2D3" type="Marker2D" parent="." unique_id=1461150294]
-position = Vector2(-64, 128)
+position = Vector2(-128, 128)
 
 [node name="Marker2D4" type="Marker2D" parent="." unique_id=262100364]
-position = Vector2(1216, 128)
+position = Vector2(1280, 128)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="DangerTimer" to="." method="_on_danger_timer_timeout"]

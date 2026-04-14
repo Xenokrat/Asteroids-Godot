@@ -23,11 +23,15 @@ func _on_timer_timeout() -> void:
 
 
 func _on_hitbox_area_2d_area_entered(area: Area2D) -> void:
-	print(area.name)
 	if area is C_Hitbox:
 		var attack: = Attack.new()
 		attack.damage = damage
 		area.damage(attack)
 		queue_free()
 	if area.name == "ExplosionArea":
+		queue_free()
+
+
+func _on_hitbox_area_2d_body_entered(body: Node2D) -> void:
+	if body.name == "Shield":
 		queue_free()

@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://j6qf34kitx5d"]
 
-[ext_resource type="Script" uid="uid://c6x4unetysc0c" path="res://bonus.gd" id="1_vqrit"]
-[ext_resource type="Texture2D" uid="uid://de3tm6jamsipo" path="res://icon.svg" id="2_riqdy"]
+[ext_resource type="Script" uid="uid://c6x4unetysc0c" path="res://game/bonus/bonus.gd" id="1_vqrit"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_riqdy"]
+size = Vector2(48, 48)
 
 [node name="Bonus" type="Node2D" unique_id=1883473726]
-position = Vector2(420, 76)
 script = ExtResource("1_vqrit")
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=1484309020]
-texture = ExtResource("2_riqdy")
+[node name="Area2D" type="Area2D" parent="." unique_id=28410347]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1212023414]
+shape = SubResource("RectangleShape2D_riqdy")

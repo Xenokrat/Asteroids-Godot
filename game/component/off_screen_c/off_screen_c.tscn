@@ -4,8 +4,3 @@
 
 [node name="OffScreen_C" type="Node2D" unique_id=705656702]
 script = ExtResource("1_70ocd")
-
-[node name="OffScreenIndicator" type="Polygon2D" parent="." unique_id=543979690]
-unique_name_in_owner = true
-position = Vector2(0, 8)
-polygon = PackedVector2Array(0, -12, -8, 20, 0, 16, 8, 20)

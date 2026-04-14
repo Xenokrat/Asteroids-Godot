@@ -6,6 +6,14 @@ extends Node2D
 @export var shooter_c: Shooter_C
 
 @onready var ship: = %ShipPlayer
+@onready var shield : StaticBody2D = %Shield
+var is_shield_active: bool
+
+
+func _ready() -> void:
+	shield.process_mode = Node.PROCESS_MODE_DISABLED
+	is_shield_active = false
+	activate_shield()
 
 
 func _process(_delta: float) -> void:
@@ -58,3 +66,17 @@ func _draw() -> void:
 	for i in PlayerResources.bombs:
 		draw_circle(ship.position + Vector2(45, -25 + i*20), 8, Color.WHITE, true)
 		draw_circle(ship.position + Vector2(45, -25 + i*20), 6, Color.BLACK, true)
+	if is_shield_active:
+		draw_circle(ship.position, 64, Color.BLUE, true)
+		draw_circle(ship.position, 60, Color.BLACK, true)
+
+
+
+func deactivate_shield() -> void:
+	shield.process_mode = Node.PROCESS_MODE_DISABLED
+	is_shield_active = false
+
+
+func activate_shield() -> void:
+	shield.process_mode = Node.PROCESS_MODE_INHERIT
+	is_shield_active = true
